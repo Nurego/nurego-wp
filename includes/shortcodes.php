@@ -27,14 +27,17 @@ function nwp_nurego_offering($atts, $content = null) {
     ), $atts ) );
 
     // Ugly hack to render the javascript on the page
-    echo '<script type="text/javascript">' 
+    return '<script type="text/javascript">' 
         .'alert("Hello");'
-        ,'jQuery( document ).ready( function() {'
-        ,'Nurego.setApiKey(' . "'". $api_key . "'" . ');'
-        ,'};'
-        ,'</script>';
+        .'jQuery( document ).ready( function() {'
+        .'Nurego.setApiKey(' . "'". $api_key . "'" . ');'
+        .'};'
+        .'</script>';
 }
 
+function nwp_return_javascript($api_key) {
+    
+}
 /**
  * Now we include all the shortcoes
  */
