@@ -51,9 +51,23 @@ if(!defined('NUREGO_BASE_DIR')) {
 
 if(is_admin()) {
     //Loads admin settings
-    include(NUREGO_BASE_DIR . 'includes/settings.php');
+    include(NUREGO_BASE_DIR . '/includes/settings.php');
 } else {
     //Load up the rest
-    include(NUREGO_BASE_DIR . 'includes/shortcodes.php');
+    include(NUREGO_BASE_DIR . '/includes/shortcodes.php');
 }
+
+/**
+ * Load external resources
+ * namely the nurego-js javascript
+ */
+function nwp_get_nurego_js() {
+    wp_register_script('nurego-js', 'http://js.nurego.com/v1/lib/js/nurego.js');
+}
+
+/**
+ * Make sure the script is included
+ */
+add_action('init', 'nwp_get_nurego_js'); 
+
 ?>
