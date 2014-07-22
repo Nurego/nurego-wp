@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Nurego WordPress
- * Plugin URI: https://nurego.com
+ * Plugin URI: http://www.nurego.com
  * Description Nurego integration for your WordPress site.
  * Version: 0.1
  * Author: Erik Barzdukas
