@@ -62,7 +62,7 @@ if(is_admin()) {
  * namely the nurego-js javascript
  */
 function nwp_get_nurego_js() {
-    wp_register_script('nurego-js', 'http://js.nurego.com/v1/lib/js/nurego.js');
+    wp_register_script('nurego-js', "http://js.nurego.com/v1/lib/js/nurego.js");
 }
 
 /**

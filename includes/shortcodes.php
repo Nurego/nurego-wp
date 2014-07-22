@@ -22,22 +22,28 @@ function nwp_nurego_test($atts, $content = null) {
  */
 function nwp_nurego_offering($atts, $content = null) {
 
+    // Load the nurego-js library at this time to use it 
+    wp_enqueue_script('nurego-js');
+
     extract( shortcode_atts( array(
         'api_key' => ''
     ), $atts ) );
 
     // Ugly hack to render the javascript on the page
-    return '<script type="text/javascript">' 
-        .'alert("Hello");'
-        .'jQuery( document ).ready( function() {'
-        .'Nurego.setApiKey(' . "'". $api_key . "'" . ');'
-        .'};'
-        .'</script>';
+    // and then the table in the right spot.
+    $output = '<script type="text/javascript">'
+             .'alert("Hello");'
+             .'jQuery( document ).ready( function() {'
+             .'Nurego.setParam(\'element_id\', \'nwp_div\');'
+             .'Nurego.setApiKey(' . "'". $api_key . "'" . ');'
+             .'});'
+             .'</script>'
+             .'<div id=\'nwp_div\'>'
+             .'</div>';
+
+    return $output;
 }
 
-function nwp_return_javascript($api_key) {
-    
-}
 /**
  * Now we include all the shortcoes
  */
