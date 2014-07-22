@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Nurego WordPress
- * Plugin URI:
+ * Plugin URI: https://nurego.com
  * Description Nurego integration for your WordPress site.
  * Version: 0.1
  * Author: Erik Barzdukas
@@ -39,13 +39,6 @@ if(!defined('NUREGO_BASE_DIR')) {
 }
 
 /**
- * Get the options string from DB
- * Will implement later for choices that arise during development
- *
- * $nurego_options = get_option('nurego_settings');
- */
-
-/**
  * Includes
  */
 
@@ -65,9 +58,7 @@ function nwp_get_nurego_js() {
     wp_register_script('nurego-js', "http://js.nurego.com/v1/lib/js/nurego.js");
 }
 
-/**
- * Make sure the script is included
- */
+//Make sure the script is included
 add_action('init', 'nwp_get_nurego_js'); 
 
 ?>
