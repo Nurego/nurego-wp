@@ -32,9 +32,9 @@ function nwp_nurego_offering($atts, $content = null) {
     wp_enqueue_script('nurego-js');
 
     // Load all potential params from symbol table
-    $nwp_params = extract( shortcode_atts( array(
+    $a = shortcode_atts( array(
         'api_key'            => '',
-        'element_id'         => '',
+        'element_id'         => 'nwp_div',   // Default for correct placement
         'theme'              => '',
         'css_url'            => '',
         'select_url'         => '',
@@ -50,7 +50,7 @@ function nwp_nurego_offering($atts, $content = null) {
         'warning_class'      => '',
         'empty_class'        => '',
         'price_class'        => '',
-    ), $atts ) );
+    ), $atts );
 
     // Top part of JS sandwich that will be returned
     $output_top = '<script type="text/javascript">'
@@ -58,15 +58,17 @@ function nwp_nurego_offering($atts, $content = null) {
 
     // Middle part of sandwich w/params
     $output_middle = '';
-    foreach ($nwp_params as $key => $value) {
-        if ($value != '') {
+    foreach ($a as $key => $value) {
+        if ($value != '' && $key != 'api_key') {
             $output_middle .= 'Nurego.setParam(\''.$key .'\',\''.$value.'\');';
         } else {
-            $output_middle .='<!--Tried to set: '.$key.'with value: '.$value.'-->';
+            // Debugging code:
+            //$output_middle .='<!--Tried to set: '.$key.' with value: '.$value.'-->';
+            continue;
         };
     };
     
-    $output_bottom = 'Nurego.setApiKey(' . "'". $api_key . "'" . ');'
+    $output_bottom = 'Nurego.setApiKey(' . "'". $a['api_key'] . "'" . ');'
         .'});'
         .'</script>'
         .'<div id=\'nwp_div\'>' // Default div to specify for correct placement
