@@ -9,7 +9,8 @@ It may evolve to be more than just a wrapper, but for now nurego.js does all of 
 heavy lifting.
 
 It renders a basic html table so it is most likely compatible with your current
-WordPress theme. Read the **Parameters** and **Usage** sections to see exactly how thisis done.
+WordPress theme. Read the **Parameters** and **Usage** sections to see exactly how to give
+it custom CSS/alter parameter values..
 
 
 Usage
