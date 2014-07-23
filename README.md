@@ -5,22 +5,29 @@ This is a WordPress plugin for easy interaction with the Nurego API.
 It is a wrapper for the javascript library that also does the tweaking necessary
 to work correctly with WordPress.
 
-It may evolve to be more than just a wrapper, but for now nurego.js does all of the
-heavy lifting.
-
-It renders a basic html table so it is most likely compatible with your current
-WordPress theme. Read the **Parameters** and **Usage** sections to see exactly how to give
-it custom CSS/alter parameter values..
-
 
 Usage
 -----
 
-    Basic
-    [nurego api_key='<YOUR API KEY>"]
+###Basic
+Once installed, visit the Nurego-WP Settings page in the Settings menu to enter in your
+Nurego live and test API keys. You can set the optional settings if you'd like.
 
-    Passing in parameters
-    [nurego api_key='<YOUR API KEY>' param='<VALUE>']
+Then render the offering like so:
+
+    Basic
+    [nurego-test] // Loads from your test API key you saved.
+
+    [nurego-live] // Loads from the live API key you saved.
+
+###Advanced
+Included is a shortcode that renders based on what you pass it, for more advanced and customizable 
+use cases such as loading differnt CSS styles on different pages.
+
+    Advanced
+    [nurego api_key="<YOUR API KEY>" param="<VALUE>"]
+
+Check out **Parameters** below to see what settings are available to you. 
 
 Parameters
 ----------
