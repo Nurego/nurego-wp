@@ -8,7 +8,7 @@
  * Author URI: https://github.com/erikbarzdukas
  * License: GPL2
  *
- *  Copyright 2014  Erik Barzdukas  (email : erik.barzdukas@gmail.com)
+ *  Copyright 2014  Nurego  (email : placeholder@nurego.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 
