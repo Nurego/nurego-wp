@@ -45,6 +45,8 @@ if(!defined('NUREGO_BASE_DIR')) {
 if(is_admin()) {
     //Loads admin settings
     include(NUREGO_BASE_DIR . '/includes/settings.php');
+    add_action('admin_init', 'register_nwp_settings');
+    add_action('admin_menu', 'register_nwp_submenu_page');
 } else {
     //Load up the rest
     include(NUREGO_BASE_DIR . '/includes/shortcodes.php');

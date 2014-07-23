@@ -16,7 +16,10 @@ function nwp_custom_submenu_page_callback() {
     echo '<h2>Nurego WordPress Setting Page</h2>';
     echo '<p>';
     echo '<form method="POST" action="options.php">';
-
+    settings_fields('nwp_settings_group');
+    do_settings_sections('nwp_settings_group');
+    submit_button();
+    echo '</form>';
     echo '</div>';
 }
 
@@ -42,7 +45,4 @@ function register_nwp_settings() {
     register_setting('nwp_settings_group', 'empty_class');
     register_setting('nwp_settings_group', 'price_class');
 }
-
-// Hook in the submenu
-add_action('admin_menu', 'register_nwp_submenu_page');
 ?>
