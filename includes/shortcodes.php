@@ -104,6 +104,10 @@ function nwp_nurego_offering($atts, $content = null) {
  */
 function nwp_nurego_live_shortcode() {
 
+    // Load the nurego-js library at this time to use it 
+    wp_enqueue_script('nurego-js');
+
+
     //Array of options to iterate through
     $a = array( 'element_id'    => 'nwp_div',   // Default for correct placement
            'theme'              => '',
@@ -178,6 +182,10 @@ function nwp_nurego_live_shortcode() {
  * @param string $price_class        CSS class for price block
  */
 function nwp_nurego_test_shortcode() {
+
+    // Load the nurego-js library at this time to use it 
+    wp_enqueue_script('nurego-js');
+
 
     //Array of options to iterate through
     $a = array( 'element_id'    => 'nwp_div',   // Default for correct placement
