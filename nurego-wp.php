@@ -4,6 +4,7 @@
  * Plugin URI: http://www.nurego.com
  * Description Nurego integration for your WordPress site.
  * Version: 1.0.0
+ * Text Domain: nwp-text-domain
  * Author: Erik Barzdukas
  * Author URI: https://github.com/erikbarzdukas
  * License: GPL2
@@ -56,7 +57,12 @@ if(is_admin()) {
  * Load the text domain for proper internationalization and 
  * localization. Checkout /languages/ to translate
  */
-load_plugin_textdomain('nwp-text-domain', false, dirname(plugin_basename(__FILE__)). '/languages/');
+function nwp_load_text_domain() {
+    load_plugin_textdomain('nwp-text-domain', false, dirname(plugin_basename(__FILE__)). '/languages');
+}
+
+// Load text domain on init
+add_action('init', 'nwp_load_text_domain');
 
 /**
  * Load external resources
