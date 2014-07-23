@@ -56,7 +56,7 @@ if(is_admin()) {
  * Load the text domain for proper internationalization and 
  * localization. Checkout /languages/ to translate
  */
-load_plugin_text_domain('nwp-text-domain', false, dirname(plugin_basename(__FILE__)). '/languages/');
+load_plugin_textdomain('nwp-text-domain', false, dirname(plugin_basename(__FILE__)). '/languages/');
 
 /**
  * Load external resources
