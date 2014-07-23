@@ -3,7 +3,7 @@
  * Plugin Name: Nurego WordPress
  * Plugin URI: http://www.nurego.com
  * Description Nurego integration for your WordPress site.
- * Version: 0.1
+ * Version: 1.0.0
  * Author: Erik Barzdukas
  * Author URI: https://github.com/erikbarzdukas
  * License: GPL2
