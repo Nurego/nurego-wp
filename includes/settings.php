@@ -4,7 +4,7 @@
  * Need to make the text translatable
  */
 function register_nwp_submenu_page() {
-    add_submenu_page('options-general.php', "Nurego WordPress", __("Nurego Wordpress Settings", 'nwp-text-domain'), 'edit_plugins', 'nwp-settings-menu', 'nwp_custom_submenu_page_callback');
+    add_submenu_page('options-general.php', __("Nurego WordPress", 'nwp-text-domain'), __("Nurego Wordpress Settings", 'nwp-text-domain'), 'edit_plugins', 'nwp-settings-menu', 'nwp_custom_submenu_page_callback');
 }
 
 /** 
