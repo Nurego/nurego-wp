@@ -33,7 +33,7 @@ Under "Settings" in your Nurego account.
 
 It's best to enter your settings and use the [nurego-live] or [nurego-test] shortcode for plug-and-play functionality.
 
-The [nurego] shortcode is included for passing parameters unique to a specific pricing table without changing site-wide plugin settings. Only use if if you need to do this.
+The [nurego] shortcode is included for passing parameters unique to a specific pricing table without changing site-wide plugin settings. Only use it if you need to do this.
 
 = The pricing table is showing up in unexpected places =
 
