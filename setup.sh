@@ -20,7 +20,7 @@ git clone https://github.com/Nurego/nurego-wp gitnurego-wp
 
 # Store the version number for svn commit message
 cd gitnurego-wp
-$version=$(less nurego-wp.php | grep "Version")
+version=$(less nurego-wp.php | grep "Version")
 echo "[***] Found new version number"
 
 # Clean the svn trunk and move the new files
