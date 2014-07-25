@@ -21,7 +21,7 @@ git clone https://github.com/Nurego/nurego-wp gitnurego-wp
 # Store the version number for svn commit message
 cd gitnurego-wp
 $version=$(less nurego-wp.php | grep "Version")
-echo "[!!!] Found new version number"
+echo "[***] Found new version number"
 
 # Clean the svn trunk and move the new files
 rm -rf ../nurego-wp/trunk*
@@ -29,8 +29,14 @@ mv * ../nurego-wp/trunk/
 cd ../nurego-wp/
 svn add trunk/*
 
+# Get username to use b/c subversion is stupid weird about
+# usernames
+
+echo "[!!!] Enter WordPress username:"
+read username
+
 # Commit and push up
-svn ci -m "$version"
+svn ci --username $username -m "$version"
 
 # Clean up!
 cd /tmp/
