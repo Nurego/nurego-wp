@@ -1,10 +1,14 @@
 #!/bin/bash
+: '
+Script that transfers changes from the git repo to the 
+official WordPress svn repo. Make sure to update the Stable
+tag version to the currect version of the plugin.
 
-################################################
-#   Script that transfers changes from the git
-#   repo to the official WordPress svn repo
-################################################
+The script creates a svn tag for whatever the Stable tag is in
+the README.txt. 
 
+Also, have your WordPress password handy.
+'
 # Check appropriate tools are installed
 command -v svn >/dev/null 2>&1 || { echo "[!!!] Subversion must be installed but wasn't found." >&2; exit 1; }
 command -v git >/dev/null 2>&1 || { echo "[!!!] Git must be installed but wasn't found." >&2; exit 1; }
