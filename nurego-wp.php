@@ -46,7 +46,6 @@ if(!defined('NUREGO_BASE_DIR')) {
 if(is_admin()) {
     //Loads admin settings
     include(NUREGO_BASE_DIR . '/includes/settings.php');
-    include(NUREGO_BASE_DIR . '/includes/css.php');
     add_action('admin_init', 'register_nwp_settings');
     add_action('admin_menu', 'register_nwp_submenu_page');
 } else {
@@ -70,7 +69,8 @@ add_action('init', 'nwp_load_text_domain');
  * namely the nurego-js javascript
  */
 function nwp_get_nurego_js() {
-    wp_register_script('nurego-js', "http://js.nurego.com/v1/lib/js/nurego.js");
+    # Using a local/customized copy
+    wp_register_script('nurego-js', NUREGO_BASE_URL . '/includes/js/lib/js/nurego.js');
 }
 
 //Make sure the script is included
