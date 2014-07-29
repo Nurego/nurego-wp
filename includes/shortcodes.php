@@ -102,11 +102,15 @@ function nwp_nurego_offering($atts, $content = null) {
  * @param string $empty_class        CSS class for empty block
  * @param string $price_class        CSS class for price block
  */
-function nwp_nurego_live_shortcode() {
+function nwp_nurego_from_settings_shortcode($atts, $content = null) {
 
     // Load the nurego-js library at this time to use it 
     wp_enqueue_script('nurego-js');
-
+    
+    // Get the environment to load
+    $environment = shortcode_atts( array(
+        'environment' =>'',
+    ), $atts);
 
     //Array of options to iterate through
     $a = array( 'element_id'    => 'nwp_div',   // Default for correct placement
@@ -124,14 +128,7 @@ function nwp_nurego_live_shortcode() {
            'warning_class'      => '',
            'empty_class'        => '',
            'price_class'        => '',
-           'css_url'            => '',
        );
-
-    // Flag to ignore css url 
-    $ignore_css;
-    if (get_option('use_theme_css') == true) {
-        $ignore_css = true;
-    }
 
     // Top part of JS sandwich that will be returned
     $output_top = '<script type="text/javascript">'
@@ -141,13 +138,7 @@ function nwp_nurego_live_shortcode() {
     $output_middle = '';
     foreach ($a as $key => $value) {
         if (get_option($key) != '') {
-
-            // If $ignore_css flag == true, skip setting it
-            if ( $key != 'css_url' && $ignore_css != true) {
-                $output_middle .= 'Nurego.setParam(\''.$key .'\',\''.get_option($key).'\');';
-            } else {
-                continue;
-            }
+            $output_middle .= 'Nurego.setParam(\''.$key .'\',\''.get_option($key).'\');';
         } elseif ( $key == 'element_id') { // Still need the default element_id if it isn't set.
             $output_middle .= 'Nurego.setParam(\''.$key.'\',\''.$value.'\');'; 
         } else {
@@ -155,10 +146,20 @@ function nwp_nurego_live_shortcode() {
             continue;
         }
     }
-    
+
+    //Make sure the CSS is there
+    $output_middle .= nwp_handle_css();
+
     //Bottom part of sandwich
-    $output_bottom = 'Nurego.setApiKey(' . "'". get_option('live_api_key') . "'" . ');'
-        .'});'
+    if ($environment['environment'] == 'live') {
+        $output_bottom = 'Nurego.setApiKey(' . "'". get_option('live_api_key') . "'" . ');';
+    } else if ($environment['environment'] == 'test') {
+        $output_bottom = 'Nurego.setApiKey(' . "'". get_option('test_api_key') . "'" . ');';
+    } else {
+        return 'Invalid environment choice.';
+    };
+
+    $output_bottom .= '});'
         .'</script>'
         .'<div id=\'nwp_div\'>' // Default div to specify for correct placement
         .'</div>';
@@ -168,104 +169,32 @@ function nwp_nurego_live_shortcode() {
 
     return $output;
 }
-
 
 /**
- * nwp_nurego_test_shortcode 
- * Following params are set in the settings page
+ * nwp_handle_css()
  *
- * @param string $test_api_key
- * @param string $element_id         ID of DOM element
- * @param string $theme              CSS class for pricing table
- * @param string $css_url            URL to css file if non-default is desired
- * @param string $select_url         URL prefix for plan link
- * @param function $select_callback  Callback function for pricing plan
- * @param string $label_price        Label in price column
- * @param string $label_select       Label on select button
- * @param string $label_feature_on   String for enabled option
- * @param string $label_feature_off  String for disabled option
- * @param string $label_before_price Prefix for price value (currency)
- * @param string $label_after_price  Suffix for price value (currency)
- * @param integer $time_out          Timeout in milliseconds
- * @param string $loading_class      CSS class for loading block
- * @param string $error_class        CSS class for error block
- * @param string $warning_class      CSS class for warning block
- * @param string $empty_class        CSS class for empty block
- * @param string $price_class        CSS class for price block
+ * Handles including the correct CSS stylesheet 
  */
-function nwp_nurego_test_shortcode() {
-
-    // Load the nurego-js library at this time to use it 
-    wp_enqueue_script('nurego-js');
-
-
-    //Array of options to iterate through
-    $a = array( 'element_id'    => 'nwp_div',   // Default for correct placement
-           'theme'              => '',
-           'css_url'            => '',
-           'select_url'         => '',
-           'select_callback'    => '',
-           'label_price'        => '',
-           'label_select'       => '',
-           'label_feature_on'   => '',
-           'label_feature_off'  => '',
-           'label_before_price' => '',
-           'label_after_price'  => '',
-           'time_out'           => '',
-           'error_class'        => '',
-           'warning_class'      => '',
-           'empty_class'        => '',
-           'price_class'        => '',
-       );
-
-    // Flag to ignore css url 
-    $ignore_css;
+function nw_handle_css() { 
+   
     if (get_option('use_theme_css') == true) {
-        $ignore_css = true;
+        // Include nothing so that the theme's styelsheet is used
+       return;
+    } else if (get_option('css_url')) {
+        // Include the stylesheet specified by the user in the settings page
+        return 'Nurego.setParam(\'css_url\','. get_option('css_url').');';
+    } else {
+        // Include the stylesheet dynamically generated using settings
+        return 'Nurego.setParam(\'css_url\','.NUREG_BASE_URL . '/includes/css.php' .');';
     }
-
-
-    // Top part of JS sandwich that will be returned
-    $output_top = '<script type="text/javascript">'
-        .'jQuery( document ).ready( function() {';
-
-    // Iterate through and set the parameters
-    $output_middle = '';
-    foreach ($a as $key => $value) {
-        if (get_option($key) != '') {
-            // If $ignore_css flag == true, skip setting it
-            if ( $key != 'css_url' && $ignore_css != true) {
-                $output_middle .= 'Nurego.setParam(\''.$key .'\',\''.get_option($key).'\');';
-            } else {
-                continue;
-            }
-        } elseif ( $key == 'element_id') { // Still need the default element_id if it isn't set.
-            $output_middle .= 'Nurego.setParam(\''.$key.'\',\''.$value.'\');'; 
-        } else {
-            // Throw debugging stuff here as needed
-            continue;
-        }
-    }
-
-    //Bottom part of sandwich
-    $output_bottom = 'Nurego.setApiKey(' . "'". get_option('test_api_key') . "'" . ');'
-        .'});'
-        .'</script>'
-        .'<div id=\'nwp_div\'>' // Default div to specify for correct placement
-        .'</div>';
-
-    // Combine it all for the correct output
-    $output = $output_top . $output_middle . $output_bottom;
-
-    return $output;
 }
+
 
 
 /**
  * Now we include all the shortcodes
  */
-add_shortcode('nurego-test', 'nwp_nurego_test_shortcode');
-add_shortcode('nurego-live', 'nwp_nurego_live_shortcode');
-add_shortcode('nurego', 'nwp_nurego_offering');
+add_shortcode('nurego', 'nwp_nurego_from_settings_shortcode');
+add_shortcode('nurego-custom', 'nwp_nurego_offering');
 ?>
 
