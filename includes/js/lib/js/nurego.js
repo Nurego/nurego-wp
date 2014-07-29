@@ -303,13 +303,11 @@ var nr_callback = function () {
                 var val = ''; //Val was hanging on to old values and repeating them where they should not be.
                 for (k = 0; k < plans[j].features.length; k++) {
                     if (plans[j].features[k].name == features[i]) {
-                        console.log(plans[j].features[k]);
                         val = (plans[j].features[k].value === parseInt(plans[j].features[k].value))? 
                            plans[j].features[k].value + ' ' + features[i] : features[i];
                     } 
                 }
                 td.innerHTML = val; //document.createTextNode
-                console.log('Appending td with text: ' + td.innerHTML);
                 tr.appendChild(td);
             }
             tableBody.appendChild(tr);
