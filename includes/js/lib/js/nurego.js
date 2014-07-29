@@ -246,7 +246,6 @@ var nr_callback = function () {
             }
             plans.push(tmp);
         }
-
         return {
             features: features,
             plans: plans
@@ -269,21 +268,21 @@ var nr_callback = function () {
 
         //Print plans
         tr = document.createElement('tr');
-        th = document.createElement('th');
-        tr.appendChild(th);
+        //th = document.createElement('th');
+        //tr.appendChild(th);
         for (i = 0; i < plans.length; i++) {
-            td = document.createElement('td');
-            td.appendChild(document.createTextNode(plans[i].name));
-            tr.appendChild(td);
+            th = document.createElement('th');
+            th.appendChild(document.createTextNode(plans[i].name));
+            tr.appendChild(th);
         }
         tableHead.appendChild(tr);
 
         //Print prices
         tr = document.createElement('tr');
-        th = document.createElement('th');
-        th.innerHTML = p.label_price;
-        th.setAttribute('class', p.price_class);
-        tr.appendChild(th);
+        //th = document.createElement('th');
+        //th.innerHTML = p.label_price;
+        //th.setAttribute('class', p.price_class);
+        //tr.appendChild(th);
         for (i = 0; i < plans.length; i++) {
             td = document.createElement('td');
             td.appendChild(document.createTextNode(plans[i].price));
@@ -296,18 +295,21 @@ var nr_callback = function () {
         //Print features
         for (i = 0; i < features.length; i++) {
             tr = document.createElement('tr');
-            th = document.createElement('th');
-            th.appendChild(document.createTextNode(features[i]));
-            tr.appendChild(th);
+            //th = document.createElement('th');
+            //th.appendChild(document.createTextNode(features[i]));
+            //tr.appendChild(th);
             for (j = 0; j < plans.length; j++) {
                 td = document.createElement('td');
-                var val = p.label_feature_off;
+                var val = ''; //Val was hanging on to old values and repeating them where they should not be.
                 for (k = 0; k < plans[j].features.length; k++) {
                     if (plans[j].features[k].name == features[i]) {
-                        val = plans[j].features[k].value;
-                    }
+                        console.log(plans[j].features[k]);
+                        val = (plans[j].features[k].value === parseInt(plans[j].features[k].value))? 
+                           plans[j].features[k].value + ' ' + features[i] : features[i];
+                    } 
                 }
                 td.innerHTML = val; //document.createTextNode
+                console.log('Appending td with text: ' + td.innerHTML);
                 tr.appendChild(td);
             }
             tableBody.appendChild(tr);
@@ -315,8 +317,8 @@ var nr_callback = function () {
 
         //Print links
         tr = document.createElement('tr');
-        th = document.createElement('th');
-        tr.appendChild(th);
+        //th = document.createElement('th');
+        //tr.appendChild(th);
         for (i = 0; i < plans.length; i++) {
             td = document.createElement('td');
 
@@ -346,8 +348,8 @@ var nr_callback = function () {
         
         //Print trials
         tr = document.createElement('tr');
-        th = document.createElement('th');
-        tr.appendChild(th);
+        //th = document.createElement('th');
+        //tr.appendChild(th);
         for (i = 0; i < plans.length; i++) {
             if (plans[i].discounts.length > 0) {
               td = document.createElement('td');
