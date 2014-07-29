@@ -7,6 +7,25 @@ function register_nwp_submenu_page() {
     add_submenu_page('options-general.php', __("Nurego WordPress", 'nwp-text-domain'), __("Nurego Wordpress Settings", 'nwp-text-domain'), 'edit_plugins', 'nwp-settings-menu', 'nwp_custom_submenu_page_callback');
 }
 
+/**
+ * nwp_render_submenu_item($title, $option, $description);
+ * Takes the title, option, and description and renders a table row
+ *
+ * @param string $title         Title to display
+ * @param string $option        Slug for option
+ * @param string $description   Text to describe option  
+ */
+function nwp_render_submenu_text_item($title, $option, $description) {
+?>
+    <tr valign="top">
+    <th scope="row"><b><?php _e($title, 'nwp-text-domain');?>:</b></th>
+    <td><input type="text" name="<?php echo $option;?>" value="<?php echo get_option($option);?>" />
+    <label class="description" for="<?php echo $option;?>"><?php _e($description, 'nwp-text-domain');?></label>
+    </td></tr>
+<?php
+}
+
+
 /** 
  * Renders the HTML for the submenu page
  */
@@ -156,6 +175,7 @@ function nwp_custom_submenu_page_callback() {
                         <label class="description" for="price_class"><?php _e('CSS class for price block',
                                                                               'nwp-text-domain');?>.</label></td>
                 </tr>
+                <?php nwp_render_submenu_text_item('Price Class', 'price_class', 'CSS class for price block');?> 
                 <tr valign="top">
                     <td><?php submit_button(); ?></td>
                </tr>
@@ -186,5 +206,10 @@ function register_nwp_settings() {
     register_setting('nwp_settings_group', 'warning_class');
     register_setting('nwp_settings_group', 'empty_class');
     register_setting('nwp_settings_group', 'price_class');
+    register_setting('nwp_settings_group', 'background_color');
+    register_setting('nwp_settings_group', 'font');
+    register_setting('nwp_settings_group', 'primary_color');
+    register_setting('nwp_settings_group', 'secondary_color');
+    register_setting('nwp_settings_group', 'tertiary-color');
 }
 ?>
