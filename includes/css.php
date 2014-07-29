@@ -1,10 +1,10 @@
 .nr-default {
-    font-family: <?php get_option('nwp-font');?>"Lato",Helvetica,Arial,sans-serif;
+    font-family: <?php get_option('font');?>"Lato",Helvetica,Arial,sans-serif;
 }
 .nr-default table {
     width: auto;
     border-collapse: collapse;
-    background: <?php get_option('nwp-background');?> #fff;
+    background: <?php get_option('background');?> #fff;
 }
 .nr-default td,
 .nr-default th {
