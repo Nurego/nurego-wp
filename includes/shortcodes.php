@@ -185,7 +185,7 @@ function nwp_handle_css() {
         return 'Nurego.setParam(\'css_url\','. get_option('css_url').');';
     } else {
         // Include the stylesheet dynamically generated using settings
-        return 'Nurego.setParam(\'css_url\','.NUREG_BASE_URL . '/includes/css.php' .');';
+        return 'Nurego.setParam(\'css_url\',' . '\'' . NUREGO_BASE_URL . 'includes/css.php' .'\'' . ');';
     }
 }
 
