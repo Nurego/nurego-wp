@@ -175,7 +175,7 @@ function nwp_nurego_from_settings_shortcode($atts, $content = null) {
  *
  * Handles including the correct CSS stylesheet 
  */
-function nw_handle_css() { 
+function nwp_handle_css() { 
    
     if (get_option('use_theme_css') == true) {
         // Include nothing so that the theme's styelsheet is used
