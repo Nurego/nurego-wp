@@ -11,6 +11,9 @@ function register_nwp_submenu_page() {
  * nwp_render_submenu_item($title, $option, $description);
  * Takes the title, option, and description and renders a table row
  *
+ * Maybe start using this once it is determined if the strings will still
+ * be caught for translation?
+ *
  * @param string $title         Title to display
  * @param string $option        Slug for option
  * @param string $description   Text to describe option  
@@ -51,25 +54,14 @@ function nwp_custom_submenu_page_callback() {
                         </td>
                 </tr>
                 <tr valign="top">
-
-                <th scope="row"><h3><?php _e('Optional Settings', 'nwp-text-domain');?>:</h3></th>
+                <th scope="row"><h3><?php _e('Display Settings', 'nwp-text-domain');?>:</h3></th>
                 </tr>
-                <tr valign="top">
-                <th scope="row"><?php _e('Element ID', 'nwp-text-domain');?>:</th>
-                        <td>
-                            <input type="text" name="element_id" value="<?php echo get_option('element_id');?>" />
-                            <label class="description" for="element_id"><?php _e('The ID of the HTML element you want the offering table appended to', 
-                                                                                 'nwp-text-domain');?>.</label>
-                        </td>
-                </tr>
-                <tr valign="top">
-                <th scope="row"><?php _e('Theme', 'nwp-text-domain');?>:</th>
-                        <td>
-                            <input type="text" name="theme" value="<?php echo get_option('theme');?>" />
-                            <label class="description" for="theme"><?php _e('The CSS class for the pricing table',
-                                                                            'nwp-text-domain');?>.</label>
-                        </td>
-                </tr>
+                 <tr valign="top">
+                <th scope="row"><?php _e('Use theme styling?', 'nwp-text-domain');?></th>
+                    <td><input type="checkbox" name='use_theme_css' value='1' <?php checked(get_option('use_theme_css'), true);?> />
+                        <label class="description" for="use_theme_css"><?php _e('Check to use your built in theme settings for the pricing table. Overrides all other style settings.');?></label>
+                    </td>
+                </tr> 
                 <tr valign="top">
                 <th scope="row"><?php _e('Custom CSS Url', 'nwp-text-domain');?>:</th>
                         <td>
@@ -78,21 +70,7 @@ function nwp_custom_submenu_page_callback() {
                                                                               'nwp-text-domain');?>.</label>
                         </td>
                 </tr>
-                <tr valign="top">
-                <th scope="row"><?php _e('Select Url', 'nwp-text-domain');?>:</th>
-                        <td><input type="text" name="select_url" value="<?php echo get_option('select_url');?>" />
-                        <label class="description" for="select_url"><?php _e('Url prefix for plan links',
-                                                                             'nwp-text-domain');?>.</label>
-                        </td>
-                </tr>
-                <tr valign="top">
-                <th scope="row"><?php _e('Select Callback', 'nwp-text-domain');?>:</th>
-                        <td><input type="text" name="select_callback" value="<?php echo get_option('select_callback');?>" />
-                        <label class="description" for="select_callback"><?php _e('Callback function executed when a plan is selected',
-                                                                                  'nwp-text-domain');?>.</label>
-                        </td>
-                </tr>
-                <tr valign="top">
+               <tr valign="top">
                 <th scope="row"><?php _e('Label Price', 'nwp-text-domain');?>:</th>
                         <td><input type="text" name="label_price" value="<?php echo get_option('label_price');?>" />
                         <label class="description" for="label_price"><?php _e('Label in the price column',
@@ -104,20 +82,6 @@ function nwp_custom_submenu_page_callback() {
                         <td><input type="text" name="label_select" value="<?php echo get_option('label_select');?>" />
                         <label class="description" for="label_select"><?php _e('Label on the select buttons', 
                                                                                'nwp-text-domain');?>.</label>
-                        </td>
-                </tr>
-                <tr valign="top">
-                <th scope="row"><?php _e('Label Feature On', 'nwp-text-domain');?>:</th>
-                        <td><input type="text" name="label_feature_on" value="<?php echo get_option('label_feature_on');?>" />
-                        <label class="description" for="label_feature_on"><?php _e('Text to render for features that are on. Can be HTML',
-                                                                                   'nwp-text-domain');?>.</label>
-                        </td>
-                </tr>
-                <tr valign="top">
-                <th scope="row"><?php _e('Label Feature Off', 'nwp-text-domain');?>:</th>
-                        <td><input type="text" name="label_feature_off" value="<?php echo get_option('label_feature_off');?>" />
-                        <label class="description" for="label_feature_off"><?php _e('Text to render for features that are off. Can be HTML',
-                                                                                    'nwp-text-domain');?>.</label>
                         </td>
                 </tr>
                 <tr valign="top">
@@ -133,8 +97,18 @@ function nwp_custom_submenu_page_callback() {
                         <label class="description" for=""><?php _e('Price suffix (ie $ for 1.00$)',
                                                                    'nwp-text-domain');?>.</label>
                         </td>
-                </tr>
                  <tr valign="top">
+                <th scope="row"><?php _e('Element ID', 'nwp-text-domain');?>:</th>
+                        <td>
+                            <input type="text" name="element_id" value="<?php echo get_option('element_id');?>" />
+                            <label class="description" for="element_id"><?php _e('The ID of the HTML element you want the offering table appended to', 
+                                                                                 'nwp-text-domain');?>.</label>
+                        </td>
+                </tr>
+               <tr valign="top">
+                <th scope="row"><h3><?php _e('Render Settings', 'nwp-text-domain');?>:</h3></th>
+                </tr>
+                <tr valign="top">
                  <th scope="row"><?php _e('Loading Timeout', 'nwp-text-domain');?>:</th>
                         <td><input type="text" name="time_out" value="<?php echo get_option('time_out');?>" />
                         <label class="description" for="time_out"><?php _e('The amount of time in milliseconds to wait before timing out when loading an offering',
@@ -142,45 +116,12 @@ function nwp_custom_submenu_page_callback() {
                         </td>
                 </tr>
                  <tr valign="top">
-                 <th scope="row"><?php _e('Loading Class', 'nwp-text-domain');?>:</th>
-                        <td><input type="text" name="loading_class" value="<?php echo get_option('loading_class');?>" />
-                        <label class="description" for="loading_class"><?php _e('CSS class for loading block',
-                                                                                'nwp-text-domain');?>.</label>
-                        </td>
-                </tr>
-                 <tr valign="top">
-                 <th scope="row"><?php _e('Error Class', 'nwp-text-domain');?>:</th>
-                        <td><input type="text" name="error_class" value="<?php echo get_option('error_class');?>" />
-                        <label class="description" for="error_class"><?php _e('CSS class for error block',
-                                                                              'nwp-text-domain');?>.</label>
-                        </td>
-                </tr>
-                 <tr valign="top">
-                 <th scope="row"><?php _e('Warning Class', 'nwp-text-domain');?>:</th>
-                        <td><input type="text" name="warning_class" value="<?php echo get_option('warning_class');?>" />
-                        <label class="description" for="warning_class"><?php _e('CSS class for warning block',
-                                                                                'nwp-text-domain');?>.</label>
-                        </td>
-                </tr>
-                 <tr valign="top">
-                 <th scope="row"><?php _e('Empy Class', 'nwp-text-domain');?>:</th>
-                        <td><input type="text" name="empty_class" value="<?php echo get_option('empty_class');?>" />
-                        <label class="description" for="empty_class"><?php _e('CSS class for an empty block',
-                                                                              'nwp-text-domain');?>.</label>
-                        </td>
-                </tr>
-                 <tr valign="top">
-                 <th scope="row"><?php _e('Price Class', 'nwp-text-domain');?>:</th>
-                        <td><input type="text" name="price_class" value="<?php echo get_option('price_class');?>" />
-                        <label class="description" for="price_class"><?php _e('CSS class for price block',
-                                                                              'nwp-text-domain');?>.</label></td>
-                </tr>
-                <?php nwp_render_submenu_text_item('Price Class', 'price_class', 'CSS class for price block');?> 
-                <tr valign="top">
                     <td><?php submit_button(); ?></td>
                </tr>
+ 
            </form></p>
-    </div> <?php
+           </div> <?php
+
 }
 
 /**
@@ -211,5 +152,6 @@ function register_nwp_settings() {
     register_setting('nwp_settings_group', 'primary_color');
     register_setting('nwp_settings_group', 'secondary_color');
     register_setting('nwp_settings_group', 'tertiary-color');
+    register_setting('nwp_settings_group', 'use_theme_css');
 }
 ?>
