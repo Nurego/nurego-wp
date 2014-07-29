@@ -111,7 +111,6 @@ function nwp_nurego_live_shortcode() {
     //Array of options to iterate through
     $a = array( 'element_id'    => 'nwp_div',   // Default for correct placement
            'theme'              => '',
-           'css_url'            => '',
            'select_url'         => '',
            'select_callback'    => '',
            'label_price'        => '',
@@ -125,7 +124,14 @@ function nwp_nurego_live_shortcode() {
            'warning_class'      => '',
            'empty_class'        => '',
            'price_class'        => '',
+           'css_url'            => '',
        );
+
+    // Flag to ignore css url 
+    $ignore_css;
+    if (get_option('use_theme_css') == true) {
+        $ignore_css = true;
+    }
 
     // Top part of JS sandwich that will be returned
     $output_top = '<script type="text/javascript">'
@@ -135,7 +141,13 @@ function nwp_nurego_live_shortcode() {
     $output_middle = '';
     foreach ($a as $key => $value) {
         if (get_option($key) != '') {
-            $output_middle .= 'Nurego.setParam(\''.$key .'\',\''.get_option($key).'\');';
+
+            // If $ignore_css flag == true, skip setting it
+            if ( $key != 'css_url' && $ignore_css != true) {
+                $output_middle .= 'Nurego.setParam(\''.$key .'\',\''.get_option($key).'\');';
+            } else {
+                continue;
+            }
         } elseif ( $key == 'element_id') { // Still need the default element_id if it isn't set.
             $output_middle .= 'Nurego.setParam(\''.$key.'\',\''.$value.'\');'; 
         } else {
@@ -143,7 +155,7 @@ function nwp_nurego_live_shortcode() {
             continue;
         }
     }
-
+    
     //Bottom part of sandwich
     $output_bottom = 'Nurego.setApiKey(' . "'". get_option('live_api_key') . "'" . ');'
         .'});'
