@@ -70,6 +70,18 @@ function nwp_custom_submenu_page_callback() {
                                                                               'nwp-text-domain');?>.</label>
                         </td>
                 </tr>
+                <tr valign="top">
+                <th scope="row"><?php _e('Table Background Color', 'nwp-text-domain');?></th>
+                    <td><input type="text" name='background' value="<?php echo get_option('background');?>" />
+                    <label class="description" for="background"><?php _e('Hex value for table background color',
+                                                                          'nwp-text-domain');?></label>
+                </tr> 
+                <tr valign="top">
+                <th scope="row"><?php _e('Font Color', 'nwp-text-domain');?></th>
+                    <td><input type="text" name='font' value="<?php echo get_option('font');?>" />
+                    <label class="description" for="font"><?php _e('Hex value for table font color',
+                                                                          'nwp-text-domain');?></label>
+                </tr> 
                <tr valign="top">
                 <th scope="row"><?php _e('Label Price', 'nwp-text-domain');?>:</th>
                         <td><input type="text" name="label_price" value="<?php echo get_option('label_price');?>" />
@@ -90,14 +102,14 @@ function nwp_custom_submenu_page_callback() {
                         <label class="description" for="lable_before_price"><?php _e('Price preffix (ie $ for $1.00)', 
                                                                                      'nwp-text-domain');?>.</label>
                         </td>
-                </tr>
+                 </tr>
                  <tr valign="top">
                  <th scope="row"><?php _e('Price Suffix', 'nwp-text-domain');?>:</th>
                         <td><input type="text" name="label_after_price" value="<?php echo get_option('label_after_price');?>" />
                         <label class="description" for=""><?php _e('Price suffix (ie $ for 1.00$)',
                                                                    'nwp-text-domain');?>.</label>
                         </td>
-                 <tr valign="top">
+                <tr valign="top">
                 <th scope="row"><?php _e('Element ID', 'nwp-text-domain');?>:</th>
                         <td>
                             <input type="text" name="element_id" value="<?php echo get_option('element_id');?>" />
@@ -105,11 +117,11 @@ function nwp_custom_submenu_page_callback() {
                                                                                  'nwp-text-domain');?>.</label>
                         </td>
                 </tr>
-               <tr valign="top">
+                <tr valign="top">
                 <th scope="row"><h3><?php _e('Render Settings', 'nwp-text-domain');?>:</h3></th>
                 </tr>
                 <tr valign="top">
-                 <th scope="row"><?php _e('Loading Timeout', 'nwp-text-domain');?>:</th>
+                <th scope="row"><?php _e('Loading Timeout', 'nwp-text-domain');?>:</th>
                         <td><input type="text" name="time_out" value="<?php echo get_option('time_out');?>" />
                         <label class="description" for="time_out"><?php _e('The amount of time in milliseconds to wait before timing out when loading an offering',
                                                                            'nwp-text-domain');?>.</label>
@@ -147,7 +159,7 @@ function register_nwp_settings() {
     register_setting('nwp_settings_group', 'warning_class');
     register_setting('nwp_settings_group', 'empty_class');
     register_setting('nwp_settings_group', 'price_class');
-    register_setting('nwp_settings_group', 'background_color');
+    register_setting('nwp_settings_group', 'background');
     register_setting('nwp_settings_group', 'font');
     register_setting('nwp_settings_group', 'primary_color');
     register_setting('nwp_settings_group', 'secondary_color');
