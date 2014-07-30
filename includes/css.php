@@ -27,6 +27,8 @@
 }
 .nr-default th {
     border: 1px solid #e8e8e8;
+    background-color: <?php echo get_option('plan_background_color');?>;
+    color: <?php echo get_option('plan_font_color');?>;
     vertical-align: middle;
     text-align: center;
 }
@@ -71,10 +73,9 @@
     font-weight: normal;
 }
 .nr-default td.nr-price {
-color: <?php echo get_option('price_color');?>;
+    color: <?php echo get_option('price_color');?>;
     font-size: 24px;
     font-weight: bold;
-    background-color: #fff;
 }
 .nr-default tfoot a {
     display: inline-block;
