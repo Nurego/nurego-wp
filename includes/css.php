@@ -170,7 +170,7 @@
 .nr-discount {
   text-transform:uppercase;
   padding: 10px 10px 10px 10px !important;
-  background-color: #f26522;
+  background-color: <?php echo get_option('primary_color');?>;
   color: wheat !important;
 }
 .nr-trial-days {
