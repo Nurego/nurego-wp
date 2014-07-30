@@ -81,8 +81,14 @@ function nwp_custom_submenu_page_callback() {
                     <td><input type="text" name='font' value="<?php echo get_option('font');?>" />
                     <label class="description" for="font"><?php _e('Hex value for table font color',
                                                                           'nwp-text-domain');?></label>
+                <tr valign="top">
+                <th scope="row"><?php _e('Primary Accent Color', 'nwp-text-domain');?></th>
+                    <td><input type="text" name='primary_color' value="<?php echo get_option('primary_color');?>" />
+                    <label class="description" for="primary_color"><?php _e('Primary color for pricing table',
+                                                                            'nwp-text-domain');?></label>
+                </th>
                 </tr> 
-               <tr valign="top">
+                <tr valign="top">
                 <th scope="row"><?php _e('Label Price', 'nwp-text-domain');?>:</th>
                         <td><input type="text" name="label_price" value="<?php echo get_option('label_price');?>" />
                         <label class="description" for="label_price"><?php _e('Label in the price column',
