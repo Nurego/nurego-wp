@@ -1,3 +1,7 @@
+<?php
+//   header("Content-type: text/css; charset: UTF-8");
+?>
+<style>
 .nr-default {
     font-family: <?php get_option('font');?>"Lato",Helvetica,Arial,sans-serif;
 }
@@ -157,3 +161,5 @@
 .nr-trial-days {
   font-size: 10px;
 }
+
+</style>
