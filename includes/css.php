@@ -28,9 +28,9 @@
 .nr-default th {
     border: 1px solid #e8e8e8;
     vertical-align: middle;
+    text-align: center;
 }
 .nr-default td {
-    color: #707383;
     font-size: 14px;
     line-height: 18px;
 }
@@ -171,7 +171,7 @@ color: <?php echo get_option('price_color');?>;
   text-transform:uppercase;
   padding: 10px 10px 10px 10px !important;
   background-color: <?php echo get_option('primary_color');?>;
-  color: wheat !important;
+  color: <?php echo get_option('secondary_color');?>;
 }
 .nr-trial-days {
   font-size: 10px;
