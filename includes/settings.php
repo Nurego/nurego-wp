@@ -96,6 +96,13 @@ function nwp_custom_submenu_page_callback() {
                 </th>
                 </tr> 
                 <tr valign="top">
+                <th scope="row"><?php _e('Secondary Accent Color', 'nwp-text-domain');?></th>
+                    <td><input type="text" name='secondary_color' value="<?php echo get_option('secondary_color');?>" />
+                    <label class="description" for="secondary_color"><?php _e('Secondary color for pricing table',
+                                                                            'nwp-text-domain');?></label>
+                </th>
+                </tr> 
+                <tr valign="top">
                 <th scope="row"><?php _e('Label Price', 'nwp-text-domain');?>:</th>
                         <td><input type="text" name="label_price" value="<?php echo get_option('label_price');?>" />
                         <label class="description" for="label_price"><?php _e('Label in the price column',
@@ -176,7 +183,6 @@ function register_nwp_settings() {
     register_setting('nwp_settings_group', 'font');
     register_setting('nwp_settings_group', 'primary_color');
     register_setting('nwp_settings_group', 'secondary_color');
-    register_setting('nwp_settings_group', 'tertiary-color');
     register_setting('nwp_settings_group', 'use_theme_css');
     register_setting('nwp_settings_group', 'price_color');
 }
