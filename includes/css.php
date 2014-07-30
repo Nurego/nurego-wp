@@ -1,16 +1,30 @@
 <?php
+/**
+ * Dynamically created CSS file for the nurego-wp plugin
+ *
+ * This file takes saved settings out of the DB and 
+ * places them in the CSS.
+ */
+?>
+
+<?php
 //   header("Content-type: text/css; charset: UTF-8");
 ?>
-<style>
+
+<?php echo '<style>';?>
 .nr-default {
-    font-family: <?php get_option('font');?>"Lato",Helvetica,Arial,sans-serif;
+    font-family: <?php echo get_option('font');?>,"Lato",Helvetica,Arial,sans-serif;
 }
 .nr-default table {
-    width: auto;
+    width: 100%;
     border-collapse: collapse;
-    background: <?php get_option('background');?> #fff;
+    background: <?php echo get_option('background');?>;
 }
-.nr-default td,
+.nr-default td {
+    border-bottom: 0;
+    border-top: 0;
+    vertical-align: middle;
+}
 .nr-default th {
     border: 1px solid #e8e8e8;
     vertical-align: middle;
@@ -22,7 +36,7 @@
 }
 .nr-default thead th,
 .nr-default tfoot th {
-    border: none;
+    //border: none;
 }
 .nr-default thead td {
     height: 30px;
@@ -42,7 +56,8 @@
 }
 .nr-default tbody td {
     text-align: center;
-    padding: 0 10px;
+    padding-top: 2px;
+    padding-bottom: 5px;
 }
 .nr-default tfoot td {
     text-align: center;
@@ -162,4 +177,4 @@
   font-size: 10px;
 }
 
-</style>
+<?php echo '</style>';?>
