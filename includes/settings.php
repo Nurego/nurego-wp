@@ -81,6 +81,13 @@ function nwp_custom_submenu_page_callback() {
                     <td><input type="text" name='font' value="<?php echo get_option('font');?>" />
                     <label class="description" for="font"><?php _e('Hex value for table font color',
                                                                           'nwp-text-domain');?></label>
+                </tr>
+                <tr valign="top">
+                <th scope="row"><?php _e('Price Font Color', 'nwp-text-domain');?></th>
+                    <td><input type="text" name='price_color' value="<?php echo get_option('price_color');?>" />
+                    <label class="description" for="price_color"><?php _e('Hex value for price font color',
+                                                                          'nwp-text-domain');?></label>
+                </tr>
                 <tr valign="top">
                 <th scope="row"><?php _e('Primary Accent Color', 'nwp-text-domain');?></th>
                     <td><input type="text" name='primary_color' value="<?php echo get_option('primary_color');?>" />
@@ -171,5 +178,6 @@ function register_nwp_settings() {
     register_setting('nwp_settings_group', 'secondary_color');
     register_setting('nwp_settings_group', 'tertiary-color');
     register_setting('nwp_settings_group', 'use_theme_css');
+    register_setting('nwp_settings_group', 'price_color');
 }
 ?>
