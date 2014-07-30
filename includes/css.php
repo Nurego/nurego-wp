@@ -71,7 +71,7 @@
     font-weight: normal;
 }
 .nr-default td.nr-price {
-    color: #f26522;
+color: <?php echo get_option('price_color');?>;
     font-size: 24px;
     font-weight: bold;
     background-color: #fff;
