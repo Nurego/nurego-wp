@@ -77,9 +77,9 @@ function nwp_custom_submenu_page_callback() {
                                                                           'nwp-text-domain');?></label>
                 </tr> 
                 <tr valign="top">
-                <th scope="row"><?php _e('Font Color', 'nwp-text-domain');?></th>
-                    <td><input type="text" name='font' value="<?php echo get_option('font');?>" />
-                    <label class="description" for="font"><?php _e('Hex value for table font color',
+                <th scope="row"><?php _e('Plan Font Color', 'nwp-text-domain');?></th>
+                    <td><input type="text" name='plan_font_color' value="<?php echo get_option('plan_font_color');?>" />
+                    <label class="description" for="plan_font_color"><?php _e('Hex value for plan font color',
                                                                           'nwp-text-domain');?></label>
                 </tr>
                 <tr valign="top">
@@ -93,14 +93,18 @@ function nwp_custom_submenu_page_callback() {
                     <td><input type="text" name='primary_color' value="<?php echo get_option('primary_color');?>" />
                     <label class="description" for="primary_color"><?php _e('Primary color for pricing table',
                                                                             'nwp-text-domain');?></label>
-                </th>
                 </tr> 
                 <tr valign="top">
                 <th scope="row"><?php _e('Secondary Accent Color', 'nwp-text-domain');?></th>
                     <td><input type="text" name='secondary_color' value="<?php echo get_option('secondary_color');?>" />
                     <label class="description" for="secondary_color"><?php _e('Secondary color for pricing table',
                                                                             'nwp-text-domain');?></label>
-                </th>
+                </tr> 
+                <tr valign="top">
+                <th scope="row"><?php _e('Plan Background Color', 'nwp-text-domain');?></th>
+                    <td><input type="text" name='plan_background_color' value="<?php echo get_option('plan_background_color');?>" />
+                    <label class="description" for="plan_background_color"><?php _e('Background color for plans in the pricing table',
+                                                                            'nwp-text-domain');?></label>
                 </tr> 
                 <tr valign="top">
                 <th scope="row"><?php _e('Label Price', 'nwp-text-domain');?>:</th>
@@ -180,10 +184,11 @@ function register_nwp_settings() {
     register_setting('nwp_settings_group', 'empty_class');
     register_setting('nwp_settings_group', 'price_class');
     register_setting('nwp_settings_group', 'background');
-    register_setting('nwp_settings_group', 'font');
+    register_setting('nwp_settings_group', 'plan_font_color');
     register_setting('nwp_settings_group', 'primary_color');
     register_setting('nwp_settings_group', 'secondary_color');
     register_setting('nwp_settings_group', 'use_theme_css');
     register_setting('nwp_settings_group', 'price_color');
+    register_setting('nwp_settings_group', 'plan_background_color');
 }
 ?>
