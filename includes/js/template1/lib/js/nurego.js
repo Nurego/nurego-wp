@@ -377,6 +377,12 @@ var nr_callback = function () {
         signup.setAttribute('href', '#');
         signup.setAttribute('class', 'nr-signup');
         signup.innerHTML = "Sign Up";
+        
+        // Email input area 
+        var signup_email = document.createElement('input');
+        signup_email.setAttribute('type', 'text');
+        signup_email.setAttribute('value', 'Email');
+        signup_div.appendChild(signup_email);
         signup_div.appendChild(signup);
         container.appendChild(signup_div);
         
@@ -392,7 +398,10 @@ var nr_callback = function () {
         
         // handle signup click
         jQuery('.nr-signup').on('click', function(e) {
-          var email = "email+" + (new Date().getTime()) + "@example.com";
+          // Old way of handling email
+          //var email = "email+" + (new Date().getTime()) + "@example.com";
+          // But we want an actual email now
+          var email = jQuery( signup_email ).val();
           
           var xhr = new easyXDM.Rpc({
               remote: p.nurego_url + "/cors/"
