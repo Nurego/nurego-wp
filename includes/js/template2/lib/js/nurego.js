@@ -270,6 +270,7 @@ var nr_callback = function () {
         //Print plans
         tr = document.createElement('tr');
         th = document.createElement('th');
+        th.setAttribute('class', 'nr-empty-th'); // Mark it as empty
         tr.appendChild(th);
         for (i = 0; i < plans.length; i++) {
             td = document.createElement('td');
@@ -316,6 +317,7 @@ var nr_callback = function () {
         //Print links
         tr = document.createElement('tr');
         th = document.createElement('th');
+        th.setAttribute('class', 'nr-empty-th'); // Mark it as empty
         tr.appendChild(th);
         for (i = 0; i < plans.length; i++) {
             td = document.createElement('td');
@@ -347,6 +349,7 @@ var nr_callback = function () {
         //Print trials
         tr = document.createElement('tr');
         th = document.createElement('th');
+        th.setAttribute('class', 'nr-empty-th'); // Mark as empty
         tr.appendChild(th);
         for (i = 0; i < plans.length; i++) {
             if (plans[i].discounts.length > 0) {
