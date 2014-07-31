@@ -64,11 +64,11 @@ function nwp_custom_submenu_page_callback() {
                 </tr> 
                 <tr valign="top">
                 <th scope="row"><?php _e('Table Template', 'nwp-text-domain');?>:</th>
-                    <td><select name="template">
-                        <option value="1" <?php selected(get_option('template'), "1");?>><?php _e('Template 1', 'nwp-text-domain');?></option>
-                        <option value="2" <?php selected(get_option('template'), "2");?>><?php _e('Template 2', 'nwp-text-domain');?></option>
+                    <td><select name="nwp_template">
+                        <option value="1" <?php selected(get_option('nwp_template'), 1);?>><?php _e('Template 1', 'nwp-text-domain');?></option>
+                        <option value="2" <?php selected(get_option('nwp_template'), 2);?>><?php _e('Template 2', 'nwp-text-domain');?></option>
                         </select>
-                        <label class="description" for="template"><?php _e('Choose the layout of your pricing table', 'nwp-text-domain');?></label>
+                        <label class="description" for="nwp_template"><?php _e('Choose the layout of your pricing table', 'nwp-text-domain');?></label>
                     </td>
                 <tr valign="top">
                 <th scope="row"><?php _e('Custom CSS Url', 'nwp-text-domain');?>:</th>
@@ -198,5 +198,6 @@ function register_nwp_settings() {
     register_setting('nwp_settings_group', 'use_theme_css');
     register_setting('nwp_settings_group', 'price_color');
     register_setting('nwp_settings_group', 'plan_background_color');
+    register_setting('nwp_settings_group', 'nwp_template');
 }
 ?>
