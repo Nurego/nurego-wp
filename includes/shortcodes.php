@@ -28,7 +28,7 @@
 function nwp_nurego_offering($atts, $content = null) {
 
     // Load the nurego-js library at this time to use it 
-    wp_enqueue_script('nurego-js');
+    wp_enqueue_script('nwp_template1');
 
     // Load all potential params from symbol table
     $a = shortcode_atts( array(
@@ -104,8 +104,13 @@ function nwp_nurego_offering($atts, $content = null) {
  */
 function nwp_nurego_from_settings_shortcode($atts, $content = null) {
 
-    // Load the nurego-js library at this time to use it 
-    wp_enqueue_script('nurego-js');
+    // Load the nurego-js library with the correct template
+    // at this time to use it 
+    if (get_option('template') == 1) {
+        wp_enqueue_script('nwp_template1');
+    } else {
+        wp_enqueue_script('nwp_template2');
+    } 
     
     // Get the environment to load
     $environment = shortcode_atts( array(

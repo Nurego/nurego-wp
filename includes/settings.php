@@ -56,12 +56,20 @@ function nwp_custom_submenu_page_callback() {
                 <tr valign="top">
                 <th scope="row"><h3><?php _e('Display Settings', 'nwp-text-domain');?>:</h3></th>
                 </tr>
-                 <tr valign="top">
+                <tr valign="top">
                 <th scope="row"><?php _e('Use theme styling?', 'nwp-text-domain');?></th>
                     <td><input type="checkbox" name='use_theme_css' value='1' <?php checked(get_option('use_theme_css'), true);?> />
                         <label class="description" for="use_theme_css"><?php _e('Check to use your built in theme settings for the pricing table. Overrides all other style settings.');?></label>
                     </td>
                 </tr> 
+                <tr valign="top">
+                <th scope="row"><?php _e('Table Template', 'nwp-text-domain');?>:</th>
+                    <td><select name="template">
+                        <option value="1" <?php selected(get_option('template'), "1");?>><?php _e('Template 1', 'nwp-text-domain');?></option>
+                        <option value="2" <?php selected(get_option('template'), "2");?>><?php _e('Template 2', 'nwp-text-domain');?></option>
+                        </select>
+                        <label class="description" for="template"><?php _e('Choose the layout of your pricing table', 'nwp-text-domain');?></label>
+                    </td>
                 <tr valign="top">
                 <th scope="row"><?php _e('Custom CSS Url', 'nwp-text-domain');?>:</th>
                         <td>
