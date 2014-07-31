@@ -68,9 +68,8 @@
     padding: 12px 0;
 }
 .nr-default th.nr-price {
-    color: #666;
     height: 32px;
-    background-color: #fff;
+    background-color: <?php echo get_option('plan_background');?>; //#fff;
     text-align: left;
     font-weight: normal;
 }
