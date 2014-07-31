@@ -5,6 +5,11 @@
  * This file takes saved settings out of the DB and 
  * places them in the CSS.
  */
+
+ // Relative pathing for this file
+ if(!defined('NUREGO_BASE_CSS_URL')) {
+     define('NUREGO_BASE_CSS_URL', plugin_dir_url(__FILE__));
+ }
 ?>
 
 
@@ -100,7 +105,7 @@
     height: 16px;
     display: block;
     margin: 0 auto;
-    background: url("../images/ico-sprite.gif") 0 0 no-repeat;
+    background: url("<?php echo NUREGO_BASE_CSS_URL . '/../images/ico-sprite.gif';?>") 0 0 no-repeat;
 }
 .nr-default .nr-check.nr-yes { background-position: 0 0; }
 .nr-default .nr-check.nr-no { background-position: -16px 0; }

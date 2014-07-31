@@ -405,7 +405,7 @@ var nr_callback = function () {
           xhr.request({
               url: "/v1/registrations/?api_key=" + p.api_key,
               method: "POST",
-              data: { email: email, plan_id: $('.nr-plan-selected').data("id") }
+              data: { email: email, plan_id: jQuery('.nr-plan-selected').data("id") }
           }, function(response) {
               console.log(response.status);
               console.log(response.data);
