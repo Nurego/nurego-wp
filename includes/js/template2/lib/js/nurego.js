@@ -381,17 +381,17 @@ var nr_callback = function () {
         container.appendChild(signup_div);
         
         // handle select event
-        $('.nr-plan-select').on('click', function(e) {
-          $('.nr-plan-selected').removeClass('nr-plan-selected');
+        jQuery('.nr-plan-select').on('click', function(e) {
+          jQuery('.nr-plan-selected').removeClass('nr-plan-selected');
           
-          $(this).addClass('nr-plan-selected');
+          jQuery(this).addClass('nr-plan-selected');
           
           e.preventDefault();
           return false;
         });
         
         // handle signup click
-        $('.nr-signup').on('click', function(e) {
+        jQuery('.nr-signup').on('click', function(e) {
           var email = "email+" + (new Date().getTime()) + "@example.com";
           
           var xhr = new easyXDM.Rpc({
