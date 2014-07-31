@@ -51,7 +51,7 @@ var nr_callback = function () {
         api_key: null,
         element_id: null,
         theme: 'nr-default',
-        css_url: '/lib/css/themes.css',
+        css_url: '', ///lib/css/themes.css 
         select_url: '/?plan_id=',
         select_callback: null,
         label_price: 'Monthly cost',
