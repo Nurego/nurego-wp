@@ -75,7 +75,12 @@ function nwp_get_nurego_js() {
     wp_register_script('nwp_template2', NUREGO_BASE_URL . '/includes/js/template2/lib/js/nurego.js'); 
 }
 
-//Make sure the script is included
-add_action('init', 'nwp_get_nurego_js'); 
+function nwp_load_easyXDM() {
+    # I keeps them in includes/js/easyXDM/
+    wp_register_script('nwp_easyXDM', NUREGO_BASE_URL . '/includes/js/easyXDM/easyXDM.min.js');
+}
 
+//Make sure the scripts are included
+add_action('init', 'nwp_get_nurego_js'); 
+add_action('init', 'nwp_load_easyXDM');
 ?>

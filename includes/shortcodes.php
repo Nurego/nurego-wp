@@ -30,6 +30,9 @@ function nwp_nurego_offering($atts, $content = null) {
     // Load the nurego-js library at this time to use it 
     wp_enqueue_script('nwp_template1');
 
+    // Need easyXDM too
+    wp_enqueue_script('nwp_easyXDM');
+
     // Load all potential params from symbol table
     $a = shortcode_atts( array(
         'api_key'            => '',
@@ -110,7 +113,10 @@ function nwp_nurego_from_settings_shortcode($atts, $content = null) {
         wp_enqueue_script('nwp_template1');
     } else {
         wp_enqueue_script('nwp_template2');
-    } 
+    }
+
+    // Need easyXDM too
+    wp_enqueue_script('nwp_easyXDM'); 
     
     // Get the environment to load
     $environment = shortcode_atts( array(
