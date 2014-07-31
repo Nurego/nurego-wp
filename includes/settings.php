@@ -67,6 +67,7 @@ function nwp_custom_submenu_page_callback() {
                     <td><select name="nwp_template">
                         <option value="1" <?php selected(get_option('nwp_template'), 1);?>><?php _e('Template 1', 'nwp-text-domain');?></option>
                         <option value="2" <?php selected(get_option('nwp_template'), 2);?>><?php _e('Template 2', 'nwp-text-domain');?></option>
+                        <option value="3" <?php selected(get_option('nwp_template'), 3);?>><?php _e('Template 3', 'nwp-text-domain');?></option>
                         </select>
                         <label class="description" for="nwp_template"><?php _e('Choose the layout of your pricing table', 'nwp-text-domain');?></label>
                     </td>

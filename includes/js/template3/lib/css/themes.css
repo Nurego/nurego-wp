@@ -1,49 +1,24 @@
-<?php
-/**
- * Dynamically created CSS file for the nurego-wp plugin
- *
- * This file takes saved settings out of the DB and 
- * places them in the CSS.
- */
-
- // Relative pathing for this file
- if(!defined('NUREGO_BASE_CSS_URL')) {
-     define('NUREGO_BASE_CSS_URL', plugin_dir_url(__FILE__));
- }
-?>
-
-
-<?php echo '<style>';?>
 .nr-default {
-    font-family: <?php echo get_option('font');?>,"Lato",Helvetica,Arial,sans-serif;
+    font-family:"Lato",Helvetica,Arial,sans-serif;
 }
 .nr-default table {
-    width: 100%;
+    width: auto;
     border-collapse: collapse;
-    background: <?php echo get_option('background');?>;
-    <?php if (get_option('nwp_template') == '3') {
-        echo 'border: none;';
-    };?>
+    background: #fff;
 }
-.nr-default td {
-    border-bottom: 0;
-    border-top: 0;
-    vertical-align: middle;
-}
+.nr-default td,
 .nr-default th {
     border: 1px solid #e8e8e8;
-    background-color: <?php echo get_option('plan_background_color');?>;
-    color: <?php echo get_option('plan_font_color');?>;
     vertical-align: middle;
-    text-align: center;
 }
 .nr-default td {
+    color: #707383;
     font-size: 14px;
     line-height: 18px;
 }
 .nr-default thead th,
 .nr-default tfoot th {
-    //border: none;
+    border: none;
 }
 .nr-default thead td {
     height: 30px;
@@ -63,30 +38,24 @@
 }
 .nr-default tbody td {
     text-align: center;
-    padding-top: 2px;
-    padding-bottom: 5px;
+    padding: 0 10px;
 }
 .nr-default tfoot td {
     text-align: center;
     padding: 12px 0;
 }
-
-.nr-default .nr-empty-th {
-    background: <?php echo get_option('background');?>;
-    border-top: none;
-    border-left: none;
-    border-bottom: none;
-}
 .nr-default th.nr-price {
+    color: #666;
     height: 32px;
-    background-color: <?php echo get_option('plan_background');?>; //#fff;
+    background-color: #fff;
     text-align: left;
     font-weight: normal;
 }
 .nr-default td.nr-price {
-    color: <?php echo get_option('price_color');?>;
+    color: #f26522;
     font-size: 24px;
     font-weight: bold;
+    background-color: #fff;
 }
 .nr-default tfoot a {
     display: inline-block;
@@ -114,7 +83,7 @@
     height: 16px;
     display: block;
     margin: 0 auto;
-    background: url("<?php echo NUREGO_BASE_CSS_URL . '/../images/ico-sprite.gif';?>") 0 0 no-repeat;
+    background: url("../images/ico-sprite.gif") 0 0 no-repeat;
 }
 .nr-default .nr-check.nr-yes { background-position: 0 0; }
 .nr-default .nr-check.nr-no { background-position: -16px 0; }
@@ -182,11 +151,9 @@
 .nr-discount {
   text-transform:uppercase;
   padding: 10px 10px 10px 10px !important;
-  background-color: <?php echo get_option('primary_color');?>;
-  color: <?php echo get_option('secondary_color');?>;
+  background-color: #f26522;
+  color: wheat !important;
 }
 .nr-trial-days {
   font-size: 10px;
 }
-
-<?php echo '</style>';?>
