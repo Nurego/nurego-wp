@@ -73,6 +73,7 @@ function nwp_get_nurego_js() {
     # Currently 1 per template
     wp_register_script('nwp_template1', NUREGO_BASE_URL . '/includes/js/template1/lib/js/nurego.js');
     wp_register_script('nwp_template2', NUREGO_BASE_URL . '/includes/js/template2/lib/js/nurego.js'); 
+    wp_register_script('nwp_template3', NUREGO_BASE_URL . '/includes/js/template3/lib/js/nurego.js');
 }
 
 function nwp_load_easyXDM() {

@@ -109,11 +109,7 @@ function nwp_nurego_from_settings_shortcode($atts, $content = null) {
 
     // Load the nurego-js library with the correct template
     // at this time to use it 
-    if (get_option('nwp_template') == 1) {
-        wp_enqueue_script('nwp_template1');
-    } else {
-        wp_enqueue_script('nwp_template2');
-    }
+    wp_enqueue_script('nwp_template' . get_option('nwp_template'));
 
     // Need easyXDM too
     wp_enqueue_script('nwp_easyXDM'); 
