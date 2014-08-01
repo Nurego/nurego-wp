@@ -89,6 +89,7 @@
         //tr.appendChild(th);
         for (i = 0; i < plans.length; i++) {
             td = document.createElement('td');
+            td.setAttribute('class', 'nr-select-button');
 
             if (p.select_url) {
                 item = document.createElement('a');

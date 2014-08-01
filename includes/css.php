@@ -91,7 +91,7 @@
 .nr-default tfoot a {
     display: inline-block;
     color: #fff;
-    background: #9799A2;
+    background: <?php echo (get_option('nwp_button_color') != '') ? get_option('nwp_button_color') : '#959595';?>;
     height: 32px;
     line-height: 32px;
     text-align: center;
@@ -182,8 +182,8 @@
 .nr-discount {
   text-transform:uppercase;
   padding: 10px 10px 10px 10px !important;
-  background-color: <?php echo get_option('nwp_primary_color');?>;
-  color: <?php echo get_option('nwp_secondary_color');?>;
+  background-color: <?php echo get_option('nwp_background');?>;
+  color: <?php echo get_option('nwp_price_color');?>;
 }
 .nr-trial-days {
   font-size: 10px;
