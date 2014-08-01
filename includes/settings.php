@@ -114,6 +114,11 @@ function nwp_custom_submenu_page_callback() {
                                                                             'nwp-text-domain');?></label>
                 </tr> 
                 <tr valign="top">
+                <th scope="row"><?php _e('Button Text Color', 'nwp-text-domain');?></th>
+                    <td><input type="text" name='nwp_button_text_color' value="<?php echo get_option('nwp_button_text_color');?>" />
+                    <label class="description" for="nwp_button_text_color"><?php _e('Button text color (hex value)',
+                                                                            'nwp-text-domain');?></label>
+                </tr>                <tr valign="top">
                 <th scope="row"><?php _e('Price Label', 'nwp-text-domain');?>:</th>
                         <td><input type="text" name="nwp_label_price" value="<?php echo get_option('nwp_label_price');?>" />
                         <label class="description" for="nwp_label_price"><?php _e('Label in the price column',
@@ -208,5 +213,6 @@ function register_nwp_settings() {
     register_setting('nwp_settings_group', 'nwp_plan_background_color');
     register_setting('nwp_settings_group', 'nwp_template');
     register_setting('nwp_settings_group', 'nwp_button_color');
+    register_setting('nwp_settings_group', 'nwp_button_text_color');
 }
 ?>

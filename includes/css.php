@@ -90,7 +90,7 @@
 }
 .nr-default tfoot a {
     display: inline-block;
-    color: #fff;
+    color: <?php echo (get_option('nwp_button_text_color') != '') ? get_option('nwp_button_text_color') : '#fff';?>;
     background: <?php echo (get_option('nwp_button_color') != '') ? get_option('nwp_button_color') : '#959595';?>;
     height: 32px;
     line-height: 32px;
