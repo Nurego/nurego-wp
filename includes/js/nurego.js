@@ -67,7 +67,7 @@ var nr_callback = function () {
         empty_class: 'nr-container nr-empty',
         price_class: 'nr-price',
         nurego_url: 'https://am-staging.nurego.com/',
-        offerings_url: 'https://am-staging.nurego.com/v1/offerings?api_key=',
+        offerings_url: 'https://portal.nurego.com/v1/offerings?api_key=',
         jquery_url: 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js',
         template: '',
         plugin_url: '',

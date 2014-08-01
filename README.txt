@@ -18,9 +18,10 @@ Get started right away by providing your Nurego API key to the [nurego] shortcod
 
 == Installation ==
 
-1. Upload the `nurego-wp/` folder to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Customize the settings in Settings/Nurego WordPress and render pricing data for a specific environment with  the parameters you set using [nurego-live] or [nurego-test]
+1. Upload the `nurego-wp/` folder to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. Customize the settings in Settings/Nurego WordPress and render pricing data for a specific environment with  the parameters you set using [nurego-live] or [nurego-test].
+
 == Frequently asked questions ==
 
 = Where do I find my API keys? =
@@ -31,7 +32,9 @@ Under "Settings" in your Nurego account.
 
 Customize your colors by entering hex values in the color fields in the settings menu.
 
-= 
+= How do I make the buttons go to the right place? =
+
+Enter the full URL to the page you want linked to the buttons. The table will automatically append the plan guid to it, but you must include the '?plan_id='. Example: 'https://example.com/signup?plan_id='
 
 = Which shortcode should I use? =
 
