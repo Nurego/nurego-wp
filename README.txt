@@ -4,7 +4,7 @@ Donate link:
 Tags: nurego
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,14 +20,18 @@ Get started right away by providing your Nurego API key to the [nurego] shortcod
 
 1. Upload the `nurego-wp/` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Start using the [nurego] shortcode right away to render pricing data with specific parameters OR
-4. Customize the settings in Settings/Nurego WordPress and render pricing data for a specific environment with  the parameters you set using [nurego-live] or [nurego-test]
-
+3. Customize the settings in Settings/Nurego WordPress and render pricing data for a specific environment with  the parameters you set using [nurego-live] or [nurego-test]
 == Frequently asked questions ==
 
 = Where do I find my API keys? =
 
 Under "Settings" in your Nurego account.
+
+= My table doesn't look pretty yet? =
+
+Customize your colors by entering hex values in the color fields in the settings menu.
+
+= 
 
 = Which shortcode should I use? =
 

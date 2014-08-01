@@ -52,6 +52,8 @@ function nwp_nurego_offering($atts, $content = null) {
         'warning_class'      => '',
         'empty_class'        => '',
         'price_class'        => '',
+        'plugin_url'         => plugin_dir_url(__FILE__),
+        'template'           => '1',
     ), $atts );
 
     // Top part of JS sandwich that will be returned
