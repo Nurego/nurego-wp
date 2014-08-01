@@ -66,8 +66,8 @@ var nr_callback = function () {
         warning_class: 'nr-notify nr-yellow',
         empty_class: 'nr-container nr-empty',
         price_class: 'nr-price',
-        nurego_url: 'https://api.nurego.com/v1/',
-        offerings_url: 'https://api.nurego.com/v1/offerings?api_key=',
+        nurego_url: 'https://am-staging.nurego.com/',
+        offerings_url: 'https://am-staging.nurego.com/v1/offerings?api_key=',
         jquery_url: 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
     };
 
@@ -313,37 +313,7 @@ var nr_callback = function () {
             tableBody.appendChild(tr);
         }
 
-        //Print links
-        tr = document.createElement('tr');
-        //th = document.createElement('th');
-        //tr.appendChild(th);
-        for (i = 0; i < plans.length; i++) {
-            td = document.createElement('td');
-
-            if (p.select_url) {
-                item = document.createElement('a');
-                item.setAttribute('href', p.select_url + plans[i].id);
-                item.setAttribute('class', 'nr-plan-select');
-                item.setAttribute('data-id', plans[i].id);
-            }
-            else {
-                item = document.createElement('span');
-            }
-            if (typeof p.select_callback == 'function') {
-                item.setAttribute('data-id', plans[i].id);
-                item.onclick = function (e) {
-                    e.stopPropagation();
-                    p.select_callback(this.getAttribute('data-id'));
-                    return false;
-                }
-            }
-            item.innerHTML = p.label_select;
-
-            td.appendChild(item);
-            tr.appendChild(td);
-        }
-        tableFoot.appendChild(tr);
-        
+       
         //Print trials
         tr = document.createElement('tr');
         //th = document.createElement('th');
@@ -364,6 +334,38 @@ var nr_callback = function () {
         }
         tableFoot.appendChild(tr);
 
+        //Print links
+        tr = document.createElement('tr');
+        //th = document.createElement('th');
+        //tr.appendChild(th);
+        for (i = 0; i < plans.length; i++) {
+            td = document.createElement('td');
+
+            if (p.select_url) {
+                item = document.createElement('a');
+                item.setAttribute('href', p.select_url + plans[i].id);
+                item.setAttribute('class', 'nr-plan-select');
+                item.setAttribute('target', '_blank');
+                item.setAttribute('data-id', plans[i].id);
+            }
+            else {
+                item = document.createElement('span');
+            }
+            if (typeof p.select_callback == 'function') {
+                item.setAttribute('data-id', plans[i].id);
+                item.onclick = function (e) {
+                    e.stopPropagation();
+                    p.select_callback(this.getAttribute('data-id'));
+                    return false;
+                }
+            }
+            item.innerHTML = p.label_select;
+
+            td.appendChild(item);
+            tr.appendChild(td);
+        }
+        tableFoot.appendChild(tr);
+ 
         table.appendChild(tableHead);
         table.appendChild(tableBody);
         table.appendChild(tableFoot);
@@ -371,30 +373,30 @@ var nr_callback = function () {
         container.appendChild(table);
         
         // append signup button
-        signup_div = document.createElement('div');
-        signup_div.setAttribute('class', 'nr-signup-div');
-        signup = document.createElement('a');
-        signup.setAttribute('href', '#');
-        signup.setAttribute('class', 'nr-signup');
-        signup.innerHTML = "Sign Up";
+        //signup_div = document.createElement('div');
+        //signup_div.setAttribute('class', 'nr-signup-div');
+        //signup = document.createElement('a');
+        //signup.setAttribute('href', 'https://portal.nurego.com/sign-up?' + jQuery(this).data("id"));
+        //signup.setAttribute('class', 'nr-signup');
+        //signup.innerHTML = "Sign Up";
         
         // Email input area 
-        var signup_email = document.createElement('input');
-        signup_email.setAttribute('type', 'text');
-        signup_email.setAttribute('value', 'Email');
-        signup_div.appendChild(signup_email);
-        signup_div.appendChild(signup);
-        container.appendChild(signup_div);
+        //var signup_email = document.createElement('input');
+        //signup_email.setAttribute('type', 'text');
+        //signup_email.setAttribute('value', 'Email');
+        //signup_div.appendChild(signup_email);
+        //signup_div.appendChild(signup);
+        //container.appendChild(signup_div);
         
         // handle select event
-        jQuery('.nr-plan-select').on('click', function(e) {
-          jQuery('.nr-plan-selected').removeClass('nr-plan-selected');
+        //jQuery('.nr-plan-select').on('click', function(e) {
+        //  jQuery('.nr-plan-selected').removeClass('nr-plan-selected');
           
-          jQuery(this).addClass('nr-plan-selected');
+        //  jQuery(this).addClass('nr-plan-selected');
           
-          e.preventDefault();
+          //e.preventDefault();
           return false;
-        });
+        //});
         
         // handle signup click
         jQuery('.nr-signup').on('click', function(e) {

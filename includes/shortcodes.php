@@ -120,21 +120,21 @@ function nwp_nurego_from_settings_shortcode($atts, $content = null) {
     ), $atts);
 
     //Array of options to iterate through
-    $a = array( 'element_id'    => 'nwp_div',   // Default for correct placement
-           'theme'              => '',
-           'select_url'         => '',
-           'select_callback'    => '',
-           'label_price'        => '',
-           'label_select'       => '',
-           'label_feature_on'   => '',
-           'label_feature_off'  => '',
-           'label_before_price' => '',
-           'label_after_price'  => '',
-           'time_out'           => '',
-           'error_class'        => '',
-           'warning_class'      => '',
-           'empty_class'        => '',
-           'price_class'        => '',
+    $a = array( 'nwp_element_id'    => 'nwp_div',   // Default for correct placement
+           'nwp_theme'              => '',
+           'nwp_select_url'         => '',
+           'nwp_select_callback'    => '',
+           'nwp_label_price'        => '',
+           'nwp_label_select'       => '',
+           'nwp_label_feature_on'   => '',
+           'nwp_label_feature_off'  => '',
+           'nwp_label_before_price' => '',
+           'nwp_label_after_price'  => '',
+           'nwp_time_out'           => '',
+           'nwp_error_class'        => '',
+           'nwp_warning_class'      => '',
+           'nwp_empty_class'        => '',
+           'nwp_price_class'        => '',
        );
 
     // Top part of JS sandwich that will be returned
@@ -145,9 +145,10 @@ function nwp_nurego_from_settings_shortcode($atts, $content = null) {
     $output_middle = '';
     foreach ($a as $key => $value) {
         if (get_option($key) != '') {
-            $output_middle .= 'Nurego.setParam(\''.$key .'\',\''.get_option($key).'\');';
-        } elseif ( $key == 'element_id') { // Still need the default element_id if it isn't set.
-            $output_middle .= 'Nurego.setParam(\''.$key.'\',\''.$value.'\');'; 
+            $param_key = substr($key, 4);
+            $output_middle .= 'Nurego.setParam(\''.$param_key .'\',\''.get_option($key).'\');';
+        } elseif ( $key == 'nwp_element_id') { // Still need the default element_id if it isn't set.
+            $output_middle .= 'Nurego.setParam(\'element_id\',\''.$value.'\');'; 
         } else {
             // Throw debugging stuff here as needed
             continue;
@@ -159,9 +160,9 @@ function nwp_nurego_from_settings_shortcode($atts, $content = null) {
 
     //Bottom part of sandwich
     if ($environment['environment'] == 'live') {
-        $output_bottom = 'Nurego.setApiKey(' . "'". get_option('live_api_key') . "'" . ');';
+        $output_bottom = 'Nurego.setApiKey(' . "'". get_option('nwp_live_api_key') . "'" . ');';
     } else if ($environment['environment'] == 'test') {
-        $output_bottom = 'Nurego.setApiKey(' . "'". get_option('test_api_key') . "'" . ');';
+        $output_bottom = 'Nurego.setApiKey(' . "'". get_option('nwp_test_api_key') . "'" . ');';
     } else {
         return 'Invalid environment choice.';
     };
@@ -184,10 +185,10 @@ function nwp_nurego_from_settings_shortcode($atts, $content = null) {
  */
 function nwp_handle_css() { 
    
-    if (get_option('use_theme_css') == true) {
+    if (get_option('nwp_use_theme_css') == true) {
         // Include nothing so that the theme's styelsheet is used
        return;
-    } else if (get_option('css_url')) {
+    } else if (get_option('nwp_css_url')) {
         // Include the stylesheet specified by the user in the settings page
         return 'Nurego.setParam(\'css_url\','. get_option('css_url').');';
     } else {

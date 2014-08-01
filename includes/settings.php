@@ -43,14 +43,14 @@ function nwp_custom_submenu_page_callback() {
             <table class="form-table">
                 <tr valign="top">
                 <th scope="row"><b><?php _e('Nurego Live API Key', 'nwp-text-domain');?>:</b></th>
-                        <td><input type="text" name="live_api_key" size="40" value="<?php echo get_option('live_api_key');?>" />
-                        <label class="description" for="live_api_key">(<?php _e('Required', 'nwp-text-domain');?>)</label>
+                        <td><input type="text" name="nwp_live_api_key" size="40" value="<?php echo get_option('nwp_live_api_key');?>" />
+                        <label class="description" for="nwp_live_api_key">(<?php _e('Required', 'nwp-text-domain');?>)</label>
                         </td>
                 </tr>
                 <tr valign="top">
                 <th scope="row"><b><?php _e('Nurego Test API Key', 'nwp-text-domain');?>:</b></th>
-                        <td><input type="text" name="test_api_key" size="40" value="<?php echo get_option('test_api_key');?>" />
-                        <label class="description" for="test_api_key">(<?php _e('Required', 'nwp-text-domain'); ?>)</label>
+                        <td><input type="text" name="nwp_test_api_key" size="40" value="<?php echo get_option('nwp_test_api_key');?>" />
+                        <label class="description" for="nwp_test_api_key">(<?php _e('Required', 'nwp-text-domain'); ?>)</label>
                         </td>
                 </tr>
                 <tr valign="top">
@@ -58,8 +58,8 @@ function nwp_custom_submenu_page_callback() {
                 </tr>
                 <tr valign="top">
                 <th scope="row"><?php _e('Use theme styling?', 'nwp-text-domain');?></th>
-                    <td><input type="checkbox" name='use_theme_css' value='1' <?php checked(get_option('use_theme_css'), true);?> />
-                        <label class="description" for="use_theme_css"><?php _e('Check to use your built in theme settings for the pricing table. Overrides all other style settings.');?></label>
+                    <td><input type="checkbox" name='nwp_use_theme_css' value='1' <?php checked(get_option('nwp_use_theme_css'), true);?> />
+                        <label class="description" for="nwp_use_theme_css"><?php _e('Check to use your built in theme settings for the pricing table. Overrides all other style settings.');?></label>
                     </td>
                 </tr> 
                 <tr valign="top">
@@ -74,79 +74,79 @@ function nwp_custom_submenu_page_callback() {
                 <tr valign="top">
                 <th scope="row"><?php _e('Custom CSS Url', 'nwp-text-domain');?>:</th>
                         <td>
-                            <input type="text" name="css_url" value="<?php echo get_option('css_url');?>" />
-                            <label class="description" for="css_url"><?php _e('The ABSOLUTE Url to the custom CSS file to be used',
+                            <input type="text" name="nwp_css_url" value="<?php echo get_option('nwp_css_url');?>" />
+                            <label class="description" for="nwp_css_url"><?php _e('The ABSOLUTE Url to the custom CSS file to be used',
                                                                               'nwp-text-domain');?>.</label>
                         </td>
                 </tr>
                 <tr valign="top">
                 <th scope="row"><?php _e('Table Background Color', 'nwp-text-domain');?></th>
-                    <td><input type="text" name='background' value="<?php echo get_option('background');?>" />
-                    <label class="description" for="background"><?php _e('Hex value for table background color',
+                    <td><input type="text" name='nwp_background' value="<?php echo get_option('nwp_background');?>" />
+                    <label class="description" for="nwp_background"><?php _e('Hex value for table background color',
                                                                           'nwp-text-domain');?></label>
                 </tr> 
                 <tr valign="top">
                 <th scope="row"><?php _e('Plan Font Color', 'nwp-text-domain');?></th>
-                    <td><input type="text" name='plan_font_color' value="<?php echo get_option('plan_font_color');?>" />
-                    <label class="description" for="plan_font_color"><?php _e('Hex value for plan font color',
+                    <td><input type="text" name='nwp_plan_font_color' value="<?php echo get_option('nwp_plan_font_color');?>" />
+                    <label class="description" for="nwp_plan_font_color"><?php _e('Hex value for plan font color',
                                                                           'nwp-text-domain');?></label>
                 </tr>
                 <tr valign="top">
                 <th scope="row"><?php _e('Price Font Color', 'nwp-text-domain');?></th>
-                    <td><input type="text" name='price_color' value="<?php echo get_option('price_color');?>" />
-                    <label class="description" for="price_color"><?php _e('Hex value for price font color',
+                    <td><input type="text" name='nwp_price_color' value="<?php echo get_option('nwp_price_color');?>" />
+                    <label class="description" for="nwp_price_color"><?php _e('Hex value for price font color',
                                                                           'nwp-text-domain');?></label>
                 </tr>
                 <tr valign="top">
                 <th scope="row"><?php _e('Primary Accent Color', 'nwp-text-domain');?></th>
-                    <td><input type="text" name='primary_color' value="<?php echo get_option('primary_color');?>" />
-                    <label class="description" for="primary_color"><?php _e('Primary color for pricing table',
+                    <td><input type="text" name='nwp_primary_color' value="<?php echo get_option('nwp_primary_color');?>" />
+                    <label class="description" for="nwp_primary_color"><?php _e('Primary color for pricing table',
                                                                             'nwp-text-domain');?></label>
                 </tr> 
                 <tr valign="top">
                 <th scope="row"><?php _e('Secondary Accent Color', 'nwp-text-domain');?></th>
-                    <td><input type="text" name='secondary_color' value="<?php echo get_option('secondary_color');?>" />
-                    <label class="description" for="secondary_color"><?php _e('Secondary color for pricing table',
+                    <td><input type="text" name='nwp_secondary_color' value="<?php echo get_option('nwp_secondary_color');?>" />
+                    <label class="description" for="nwp_secondary_color"><?php _e('Secondary color for pricing table',
                                                                             'nwp-text-domain');?></label>
                 </tr> 
                 <tr valign="top">
                 <th scope="row"><?php _e('Plan Background Color', 'nwp-text-domain');?></th>
-                    <td><input type="text" name='plan_background_color' value="<?php echo get_option('plan_background_color');?>" />
-                    <label class="description" for="plan_background_color"><?php _e('Background color for plans in the pricing table',
+                    <td><input type="text" name='nwp_plan_background_color' value="<?php echo get_option('nwp_plan_background_color');?>" />
+                    <label class="description" for="nwp_plan_background_color"><?php _e('Background color for plans in the pricing table',
                                                                             'nwp-text-domain');?></label>
                 </tr> 
                 <tr valign="top">
                 <th scope="row"><?php _e('Label Price', 'nwp-text-domain');?>:</th>
-                        <td><input type="text" name="label_price" value="<?php echo get_option('label_price');?>" />
-                        <label class="description" for="label_price"><?php _e('Label in the price column',
+                        <td><input type="text" name="nwp_label_price" value="<?php echo get_option('nwp_label_price');?>" />
+                        <label class="description" for="nwp_label_price"><?php _e('Label in the price column',
                                                                               'nwp-text-domain');?>.</label>
                         </td>
                 </tr>
                 <tr valign="top">
                 <th scope="row"><?php _e('Label Select', 'nwp-text-domain');?>:</th>
-                        <td><input type="text" name="label_select" value="<?php echo get_option('label_select');?>" />
-                        <label class="description" for="label_select"><?php _e('Label on the select buttons', 
+                        <td><input type="text" name="nwp_label_select" value="<?php echo get_option('nwp_label_select');?>" />
+                        <label class="description" for="nwp_label_select"><?php _e('Label on the select buttons', 
                                                                                'nwp-text-domain');?>.</label>
                         </td>
                 </tr>
                 <tr valign="top">
                 <th scope="row"><?php _e('Price Prefix', 'nwp-text-domain');?>:</th>
-                        <td><input type="text" name="label_before_price" value="<?php echo get_option('label_before_price');?>" />
-                        <label class="description" for="lable_before_price"><?php _e('Price preffix (ie $ for $1.00)', 
+                        <td><input type="text" name="nwp_label_before_price" value="<?php echo get_option('nwp_label_before_price');?>" />
+                        <label class="description" for="nwp_label_before_price"><?php _e('Price preffix (ie $ for $1.00)', 
                                                                                      'nwp-text-domain');?>.</label>
                         </td>
                  </tr>
                  <tr valign="top">
                  <th scope="row"><?php _e('Price Suffix', 'nwp-text-domain');?>:</th>
-                        <td><input type="text" name="label_after_price" value="<?php echo get_option('label_after_price');?>" />
-                        <label class="description" for=""><?php _e('Price suffix (ie $ for 1.00$)',
+                        <td><input type="text" name="nwp_label_after_price" value="<?php echo get_option('nwp_label_after_price');?>" />
+                        <label class="description" for="nwp_label_after_price"><?php _e('Price suffix (ie $ for 1.00$)',
                                                                    'nwp-text-domain');?>.</label>
                         </td>
                 <tr valign="top">
                 <th scope="row"><?php _e('Element ID', 'nwp-text-domain');?>:</th>
                         <td>
-                            <input type="text" name="element_id" value="<?php echo get_option('element_id');?>" />
-                            <label class="description" for="element_id"><?php _e('The ID of the HTML element you want the offering table appended to', 
+                            <input type="text" name="nwp_element_id" value="<?php echo get_option('nwp_element_id');?>" />
+                            <label class="description" for="nwp_element_id"><?php _e('The ID of the HTML element you want the offering table appended to', 
                                                                                  'nwp-text-domain');?>.</label>
                         </td>
                 </tr>
@@ -154,9 +154,25 @@ function nwp_custom_submenu_page_callback() {
                 <th scope="row"><h3><?php _e('Render Settings', 'nwp-text-domain');?>:</h3></th>
                 </tr>
                 <tr valign="top">
+                <th scope="row"><?php _e('Select URL', 'nwp-text-domain');?>:</th>
+                        <td>
+                            <input type="text" name="nwp_select_url" value="<?php echo get_option('nwp_select_url');?>" />
+                            <label class="description" for="nwp_select_url"><?php _e('The ID of the HTML element you want the offering table appended to', 
+                                                                                 'nwp-text-domain');?>.</label>
+                        </td>
+                </tr>
+                <tr valign="top">
+                <th scope="row"><?php _e('Select Callback', 'nwp-text-domain');?>:</th>
+                        <td>
+                            <input type="text" name="nwp_select_callback" value="<?php echo get_option('nwp_select_callback');?>" />
+                            <label class="description" for="nwp_select_callback"><?php _e('The ID of the HTML element you want the offering table appended to', 
+                                                                                 'nwp-text-domain');?>.</label>
+                        </td>
+               </tr>
+               <tr valign="top">
                 <th scope="row"><?php _e('Loading Timeout', 'nwp-text-domain');?>:</th>
-                        <td><input type="text" name="time_out" value="<?php echo get_option('time_out');?>" />
-                        <label class="description" for="time_out"><?php _e('The amount of time in milliseconds to wait before timing out when loading an offering',
+                        <td><input type="text" name="nwp_time_out" value="<?php echo get_option('nwp_time_out');?>" />
+                        <label class="description" for="nwp_time_out"><?php _e('The amount of time in milliseconds to wait before timing out when loading an offering',
                                                                            'nwp-text-domain');?>.</label>
                         </td>
                 </tr>
@@ -173,32 +189,32 @@ function nwp_custom_submenu_page_callback() {
  * Register all of the settings we intend to show on the settings page
  */
 function register_nwp_settings() {
-    register_setting('nwp_settings_group', 'live_api_key');
-    register_setting('nwp_settings_group', 'test_api_key');
-    register_setting('nwp_settings_group', 'element_id');
-    register_setting('nwp_settings_group', 'theme');
-    register_setting('nwp_settings_group', 'css_url');
-    register_setting('nwp_settings_group', 'select_url');
-    register_setting('nwp_settings_group', 'select_callback');
-    register_setting('nwp_settings_group', 'label_price');
-    register_setting('nwp_settings_group', 'label_select');
-    register_setting('nwp_settings_group', 'label_feature_on');
-    register_setting('nwp_settings_group', 'label_feature_off');
-    register_setting('nwp_settings_group', 'label_before_price');
-    register_setting('nwp_settings_group', 'label_after_price');
-    register_setting('nwp_settings_group', 'time_out');
-    register_setting('nwp_settings_group', 'loading_class');
-    register_setting('nwp_settings_group', 'error_class');
-    register_setting('nwp_settings_group', 'warning_class');
-    register_setting('nwp_settings_group', 'empty_class');
-    register_setting('nwp_settings_group', 'price_class');
-    register_setting('nwp_settings_group', 'background');
-    register_setting('nwp_settings_group', 'plan_font_color');
-    register_setting('nwp_settings_group', 'primary_color');
-    register_setting('nwp_settings_group', 'secondary_color');
-    register_setting('nwp_settings_group', 'use_theme_css');
-    register_setting('nwp_settings_group', 'price_color');
-    register_setting('nwp_settings_group', 'plan_background_color');
+    register_setting('nwp_settings_group', 'nwp_live_api_key');
+    register_setting('nwp_settings_group', 'nwp_test_api_key');
+    register_setting('nwp_settings_group', 'nwp_element_id');
+    register_setting('nwp_settings_group', 'nwp_theme');
+    register_setting('nwp_settings_group', 'nwp_css_url');
+    register_setting('nwp_settings_group', 'nwp_select_url');
+    register_setting('nwp_settings_group', 'nwp_select_callback');
+    register_setting('nwp_settings_group', 'nwp_label_price');
+    register_setting('nwp_settings_group', 'nwp_label_select');
+    register_setting('nwp_settings_group', 'nwp_label_feature_on');
+    register_setting('nwp_settings_group', 'nwp_label_feature_off');
+    register_setting('nwp_settings_group', 'nwp_label_before_price');
+    register_setting('nwp_settings_group', 'nwp_label_after_price');
+    register_setting('nwp_settings_group', 'nwp_time_out');
+    register_setting('nwp_settings_group', 'nwp_loading_class');
+    register_setting('nwp_settings_group', 'nwp_error_class');
+    register_setting('nwp_settings_group', 'nwp_warning_class');
+    register_setting('nwp_settings_group', 'nwp_empty_class');
+    register_setting('nwp_settings_group', 'nwp_price_class');
+    register_setting('nwp_settings_group', 'nwp_background');
+    register_setting('nwp_settings_group', 'nwp_plan_font_color');
+    register_setting('nwp_settings_group', 'nwp_primary_color');
+    register_setting('nwp_settings_group', 'nwp_secondary_color');
+    register_setting('nwp_settings_group', 'nwp_use_theme_css');
+    register_setting('nwp_settings_group', 'nwp_price_color');
+    register_setting('nwp_settings_group', 'nwp_plan_background_color');
     register_setting('nwp_settings_group', 'nwp_template');
 }
 ?>

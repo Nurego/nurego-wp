@@ -15,12 +15,12 @@
 
 <?php echo '<style>';?>
 .nr-default {
-    font-family: <?php echo get_option('font');?>,"Lato",Helvetica,Arial,sans-serif;
+    font-family: <?php echo get_option('nwp_font');?>,"Lato",Helvetica,Arial,sans-serif;
 }
 .nr-default table {
     width: 100%;
     border-collapse: collapse;
-    background: <?php echo get_option('background');?>;
+    background: <?php echo get_option('nwp_background');?>;
     <?php if (get_option('nwp_template') == '3') {
         echo 'border: none;';
     };?>
@@ -32,8 +32,8 @@
 }
 .nr-default th {
     border: 1px solid #e8e8e8;
-    background-color: <?php echo get_option('plan_background_color');?>;
-    color: <?php echo get_option('plan_font_color');?>;
+    background-color: <?php echo get_option('nwp_plan_background_color');?>;
+    color: <?php echo get_option('nwp_plan_font_color');?>;
     vertical-align: middle;
     text-align: center;
 }
@@ -72,19 +72,19 @@
 }
 
 .nr-default .nr-empty-th {
-    background: <?php echo get_option('background');?>;
+    background: <?php echo get_option('nwp_background');?>;
     border-top: none;
     border-left: none;
     border-bottom: none;
 }
 .nr-default th.nr-price {
     height: 32px;
-    background-color: <?php echo get_option('plan_background');?>; //#fff;
+    background-color: <?php echo get_option('nwp_plan_background');?>; //#fff;
     text-align: left;
     font-weight: normal;
 }
 .nr-default td.nr-price {
-    color: <?php echo get_option('price_color');?>;
+    color: <?php echo get_option('nwp_price_color');?>;
     font-size: 24px;
     font-weight: bold;
 }
@@ -182,8 +182,8 @@
 .nr-discount {
   text-transform:uppercase;
   padding: 10px 10px 10px 10px !important;
-  background-color: <?php echo get_option('primary_color');?>;
-  color: <?php echo get_option('secondary_color');?>;
+  background-color: <?php echo get_option('nwp_primary_color');?>;
+  color: <?php echo get_option('nwp_secondary_color');?>;
 }
 .nr-trial-days {
   font-size: 10px;
