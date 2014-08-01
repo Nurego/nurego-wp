@@ -46,3 +46,7 @@ The [nurego] shortcode is included for passing parameters unique to a specific p
 
 Please get in touch, and include your theme information.
 
+== Screenshots ==
+1
+2
+3
