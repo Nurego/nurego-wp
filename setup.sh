@@ -40,6 +40,7 @@ echo "[***] $version_number"
 # release
 rm -rf ../nurego-wp/trunk*
 mv * ../nurego-wp/trunk/
+cp screen* ../nurego-wp/assets/
 rm ../nurego-wp/trunk/setup.sh
 cd ../nurego-wp/
 svn add trunk/*
