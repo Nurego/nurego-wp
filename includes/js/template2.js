@@ -29,6 +29,7 @@
         th = document.createElement('th');
         th.innerHTML = p.label_price;
         th.setAttribute('class', p.price_class);
+        th.style.fontWeight = 'bold';
         tr.appendChild(th);
         for (i = 0; i < plans.length; i++) {
             td = document.createElement('td');
@@ -44,6 +45,7 @@
             tr = document.createElement('tr');
             th = document.createElement('th');
             th.appendChild(document.createTextNode(features[i]));
+            th.style.fontWeight = 'bold';
             tr.appendChild(th);
             for (j = 0; j < plans.length; j++) {
                 td = document.createElement('td');

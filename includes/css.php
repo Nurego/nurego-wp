@@ -31,7 +31,7 @@
     vertical-align: middle;
 }
 .nr-default th {
-    border: 1px solid #e8e8e8;
+border: <?php echo ((get_option('nwp_template') != '1')) ? '0px' : '1px';?> solid #e8e8e8;
     background-color: <?php echo get_option('nwp_plan_background_color');?>;
     color: <?php echo get_option('nwp_plan_font_color');?>;
     vertical-align: middle;
@@ -72,7 +72,7 @@
 }
 
 .nr-default .nr-empty-th {
-    background: <?php echo get_option('nwp_background');?>;
+    <?php if (get_option('nwp_template') == 3) echo 'background: '.get_option('nwp_background').';'; ?>;
     border-top: none;
     border-left: none;
     border-bottom: none;
