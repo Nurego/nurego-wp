@@ -28,7 +28,7 @@
 function nwp_nurego_offering($atts, $content = null) {
 
     // Load the nurego-js library at this time to use it 
-    wp_enqueue_script('nwp_template1');
+    wp_enqueue_script('nurego-js');
 
     // Need easyXDM too
     wp_enqueue_script('nwp_easyXDM');
@@ -109,7 +109,7 @@ function nwp_nurego_from_settings_shortcode($atts, $content = null) {
 
     // Load the nurego-js library with the correct template
     // at this time to use it 
-    wp_enqueue_script('nwp_template' . get_option('nwp_template'));
+    wp_enqueue_script('nurego-js');
 
     // Need easyXDM too
     wp_enqueue_script('nwp_easyXDM'); 
@@ -135,6 +135,7 @@ function nwp_nurego_from_settings_shortcode($atts, $content = null) {
            'nwp_warning_class'      => '',
            'nwp_empty_class'        => '',
            'nwp_price_class'        => '',
+           'nwp_template'           => '',
        );
 
     // Top part of JS sandwich that will be returned
@@ -157,6 +158,7 @@ function nwp_nurego_from_settings_shortcode($atts, $content = null) {
 
     //Make sure the CSS is there
     $output_middle .= nwp_handle_css();
+    $output_middle .= 'Nurego.setParam(\'plugin_url\',\''.plugin_dir_url(__FILE__).'\');';
 
     //Bottom part of sandwich
     if ($environment['environment'] == 'live') {

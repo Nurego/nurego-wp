@@ -70,10 +70,7 @@ add_action('init', 'nwp_load_text_domain');
  */
 function nwp_get_nurego_js() {
     # Using a local/customized copy
-    # Currently 1 per template
-    wp_register_script('nwp_template1', NUREGO_BASE_URL . '/includes/js/template1/lib/js/nurego.js');
-    wp_register_script('nwp_template2', NUREGO_BASE_URL . '/includes/js/template2/lib/js/nurego.js'); 
-    wp_register_script('nwp_template3', NUREGO_BASE_URL . '/includes/js/template3/lib/js/nurego.js');
+    wp_register_script('nurego-js', NUREGO_BASE_URL . '/includes/js/nurego.js');
 }
 
 function nwp_load_easyXDM() {
