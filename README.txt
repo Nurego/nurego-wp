@@ -1,5 +1,5 @@
 === Nurego-WP ===
-Contributors: erik.barzdukas
+Contributors: nurego
 Donate link: 
 Tags: nurego
 Requires at least: 3.3
