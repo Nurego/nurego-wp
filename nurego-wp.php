@@ -77,8 +77,12 @@ function nwp_load_easyXDM() {
     # I keeps them in includes/js/easyXDM/
     wp_register_script('nwp_easyXDM', NUREGO_BASE_URL . '/includes/js/easyXDM/easyXDM.min.js');
 }
+function nwp_load_jscolor() {
+    wp_register_script('nwp_jscolor', NUREGO_BASE_URL . '/includes/js/jscolor.js');
+}
 
 //Make sure the scripts are included
 add_action('init', 'nwp_get_nurego_js'); 
 add_action('init', 'nwp_load_easyXDM');
+add_action('init', 'nwp_load_jscolor');
 ?>

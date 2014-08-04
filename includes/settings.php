@@ -8,38 +8,27 @@ function register_nwp_submenu_page() {
 }
 
 /**
- * nwp_render_submenu_item($title, $option, $description);
- * Takes the title, option, and description and renders a table row
- *
- * Maybe start using this once it is determined if the strings will still
- * be caught for translation?
- *
- * @param string $title         Title to display
- * @param string $option        Slug for option
- * @param string $description   Text to describe option  
+ * Let's learn metaboxes
  */
-function nwp_render_submenu_text_item($title, $option, $description) {
-?>
-    <tr valign="top">
-    <th scope="row"><b><?php _e($title, 'nwp-text-domain');?>:</b></th>
-    <td><input type="text" name="<?php echo $option;?>" value="<?php echo get_option($option);?>" />
-    <label class="description" for="<?php echo $option;?>"><?php _e($description, 'nwp-text-domain');?></label>
-    </td></tr>
-<?php
-}
 
 
 /** 
  * Renders the HTML for the submenu page
  */
 function nwp_custom_submenu_page_callback() {
-?>
+
+    if( isset( $_GET['tab'])) $tab = $_GET['tab'];
+    else $tab = 'home'; 
+    
+    wp_enqueue_script('nwp_jscolor'); ?>
+
      <div class="wrap">
      <h2><?php _e('Nurego WordPress Settings', 'nwp-text-domain');?></h2>
            <p>
             <form method="POST" action="options.php">
             <?php settings_fields('nwp_settings_group');
-            do_settings_sections('nwp_settings_group'); ?>
+    do_settings_sections('nwp_settings_group'); ?>
+
             <table class="form-table">
                 <tr valign="top">
                 <th scope="row"><b><?php _e('Nurego Live API Key', 'nwp-text-domain');?>:</b></th>
@@ -73,49 +62,49 @@ function nwp_custom_submenu_page_callback() {
                     </td>
                 <tr valign="top">
                 <th scope="row"><?php _e('Table Background Color', 'nwp-text-domain');?></th>
-                    <td><input type="text" name='nwp_background' value="<?php echo get_option('nwp_background');?>" />
+                    <td><input type="text" class="color" name='nwp_background' value="<?php echo get_option('nwp_background');?>" />
                     <label class="description" for="nwp_background"><?php _e('Table background color (hex value)',
                                                                           'nwp-text-domain');?></label>
                 </tr> 
                 <tr valign="top">
                 <th scope="row"><?php _e('Plan Font Color', 'nwp-text-domain');?></th>
-                    <td><input type="text" name='nwp_plan_font_color' value="<?php echo get_option('nwp_plan_font_color');?>" />
+                    <td><input type="text" class="color" name='nwp_plan_font_color' value="<?php echo get_option('nwp_plan_font_color');?>" />
                     <label class="description" for="nwp_plan_font_color"><?php _e('Plan font color (hex value)',
                                                                           'nwp-text-domain');?></label>
                 </tr>
                 <tr valign="top">
                 <th scope="row"><?php _e('Price Font Color', 'nwp-text-domain');?></th>
-                    <td><input type="text" name='nwp_price_color' value="<?php echo get_option('nwp_price_color');?>" />
+                    <td><input type="text" class="color" name='nwp_price_color' value="<?php echo get_option('nwp_price_color');?>" />
                     <label class="description" for="nwp_price_color"><?php _e('Price font color (hex value)',
                                                                           'nwp-text-domain');?></label>
                 </tr>
                 <tr valign="top">
                 <th scope="row"><?php _e('Primary Accent Color', 'nwp-text-domain');?></th>
-                    <td><input type="text" name='nwp_primary_color' value="<?php echo get_option('nwp_primary_color');?>" />
+                    <td><input type="text" class="color" name='nwp_primary_color' value="<?php echo get_option('nwp_primary_color');?>" />
                     <label class="description" for="nwp_primary_color"><?php _e('Primary color for pricing table (hex value)',
                                                                             'nwp-text-domain');?></label>
                 </tr> 
                 <tr valign="top">
                 <th scope="row"><?php _e('Secondary Accent Color', 'nwp-text-domain');?></th>
-                    <td><input type="text" name='nwp_secondary_color' value="<?php echo get_option('nwp_secondary_color');?>" />
+                    <td><input type="text" class="color" name='nwp_secondary_color' value="<?php echo get_option('nwp_secondary_color');?>" />
                     <label class="description" for="nwp_secondary_color"><?php _e('Secondary color for pricing table (hex value)',
                                                                             'nwp-text-domain');?></label>
                 </tr> 
                 <tr valign="top">
                 <th scope="row"><?php _e('Plan Background Color', 'nwp-text-domain');?></th>
-                    <td><input type="text" name='nwp_plan_background_color' value="<?php echo get_option('nwp_plan_background_color');?>" />
+                    <td><input type="text" class="color" name='nwp_plan_background_color' value="<?php echo get_option('nwp_plan_background_color');?>" />
                     <label class="description" for="nwp_plan_background_color"><?php _e('Background color for plans in the pricing table (hex value)',
                                                                             'nwp-text-domain');?></label>
                 </tr> 
                 <tr valign="top">
                 <th scope="row"><?php _e('Button Color', 'nwp-text-domain');?></th>
-                    <td><input type="text" name='nwp_button_color' value="<?php echo get_option('nwp_button_color');?>" />
+                    <td><input type="text" class="color" name='nwp_button_color' value="<?php echo get_option('nwp_button_color');?>" />
                     <label class="description" for="nwp_button_color"><?php _e('Button color (hex value)',
                                                                             'nwp-text-domain');?></label>
                 </tr> 
                 <tr valign="top">
                 <th scope="row"><?php _e('Button Text Color', 'nwp-text-domain');?></th>
-                    <td><input type="text" name='nwp_button_text_color' value="<?php echo get_option('nwp_button_text_color');?>" />
+                    <td><input type="text" class="color" name='nwp_button_text_color' value="<?php echo get_option('nwp_button_text_color');?>" />
                     <label class="description" for="nwp_button_text_color"><?php _e('Button text color (hex value)',
                                                                             'nwp-text-domain');?></label>
                 </tr>                <tr valign="top">
