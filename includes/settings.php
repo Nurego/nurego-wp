@@ -18,7 +18,6 @@ function register_nwp_submenu_page() {
 function nwp_custom_submenu_page_callback() {
 
     global $nwp_options;
-
     if( isset( $_GET['tab'])) $tab = $_GET['tab'];
     else $tab = 'api_keys'; 
     
@@ -37,26 +36,24 @@ function nwp_custom_submenu_page_callback() {
                 <a href="?page=nwp-settings-menu&tab=render" class="nav-tab <?php echo ($tab == 'render') ? 'nav-tab-active' : '' ;?>">Render</a>
             </h2>
 
-            //Now use this giant if statement to load the correct part of the form.
-            //It's only a simple if else if else structure.
             <?php if($tab == 'api_keys') {?>
                 <tr valign="top">
                 <th scope="row"><b><?php _e('Nurego Live API Key', 'nwp-text-domain');?>:</b></th>
-                        <td><input type="text" id="nwp_options[live_api_key]" name="nwp_options[live_api_key]" size="40" value="<?php echo $nwp_options['live_api_key'];?>" />
-                        <label class="description" for="nwp_options[live_api_key]">(<?php _e('Required', 'nwp-text-domain');?>)</label>
+                        <td><input type="text" id="nwp_settings[live_api_key]" name="nwp_settings[live_api_key]" size="40" value="<?php echo $nwp_options['live_api_key'];?>" />
+                        <label class="description" for="nwp_settings[live_api_key]">(<?php _e('Required', 'nwp-text-domain');?>)</label>
                         </td>
                 </tr>
                 <tr valign="top">
                 <th scope="row"><b><?php _e('Nurego Test API Key', 'nwp-text-domain');?>:</b></th>
-                        <td><input type="text" id="nwp_options[test_api_key]" name="nwp_options[test_api_key]" size="40" value="<?php echo $nwp_options['test_api_key'];?>" />
-                        <label class="description" for="nwp_options[test_api_key]">(<?php _e('Required', 'nwp-text-domain'); ?>)</label>
+                        <td><input type="text" id="nwp_settings[test_api_key]" name="nwp_settings[test_api_key]" size="40" value="<?php echo $nwp_options['test_api_key'];?>" />
+                        <label class="description" for="nwp_settings[test_api_key]">(<?php _e('Required', 'nwp-text-domain'); ?>)</label>
                         </td>
                 </tr>
                 <?php } else if($tab == 'display') {?>
                 <tr valign="top">
                 <th scope="row"><?php _e('Use theme styling?', 'nwp-text-domain');?></th>
-                    <td><input type="checkbox" id='nwp_options[use_theme_css]' name='nwp_options[use_theme_css]' value='1' <?php checked($nwp_options['use_theme_css'], true);?> />
-                        <label class="description" for="nwp_options[use_theme_css]"><?php _e('Check to use your built in theme settings for the pricing table. Overrides all other style settings.');?></label>
+                    <td><input type="checkbox" id='nwp_settings[use_theme_css]' name='nwp_settings[use_theme_css]' value='1' <?php checked($nwp_options['use_theme_css'], true);?> />
+                        <label class="description" for="nwp_settings[use_theme_css]"><?php _e('Check to use your built in theme settings for the pricing table. Overrides all other style settings.');?></label>
                     </td>
                 </tr> 
                 <tr valign="top">
@@ -183,4 +180,5 @@ function nwp_custom_submenu_page_callback() {
 function register_nwp_settings() {
     register_setting('nwp_settings_group', 'nwp_settings');
 }
+add_action('admin_init', 'register_nwp_settings');
 ?>
