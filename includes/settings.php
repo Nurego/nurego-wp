@@ -7,9 +7,6 @@ function register_nwp_submenu_page() {
     add_submenu_page('options-general.php', __("Nurego WordPress", 'nwp-text-domain'), __("Nurego Wordpress Settings", 'nwp-text-domain'), 'edit_plugins', 'nwp-settings-menu', 'nwp_custom_submenu_page_callback');
 }
 
-/**
- * Let's learn metaboxes
- */
 
 
 /** 
@@ -27,7 +24,10 @@ function nwp_custom_submenu_page_callback() {
      <h2><?php _e('Nurego WordPress Settings', 'nwp-text-domain');?></h2>
            <p>
             <form method="POST" action="options.php">
-            <?php settings_fields('nwp_settings_group'); ?>
+            <?php settings_fields('nwp_settings_group'); 
+    foreach( $nwp_options as $key => $value) {
+        echo $key. ' | '. $value. '<br />';
+    };?>
 
             <table class="form-table">
             <h2 class="nav-tab-wrapper'">
@@ -39,20 +39,20 @@ function nwp_custom_submenu_page_callback() {
             <?php if($tab == 'api_keys') {?>
                 <tr valign="top">
                 <th scope="row"><b><?php _e('Nurego Live API Key', 'nwp-text-domain');?>:</b></th>
-                        <td><input type="text" id="nwp_settings[live_api_key]" name="nwp_settings[live_api_key]" size="40" value="<?php echo $nwp_options['live_api_key'];?>" />
+                        <td><input type="text" id="nwp_settings[live_api_key]" name="nwp_settings[live_api_key]" size="40" value="<?php echo (isset($nwp_options['live_api_key'])) ? $nwp_options['live_api_key'] : '' ;?>" />
                         <label class="description" for="nwp_settings[live_api_key]">(<?php _e('Required', 'nwp-text-domain');?>)</label>
                         </td>
                 </tr>
                 <tr valign="top">
                 <th scope="row"><b><?php _e('Nurego Test API Key', 'nwp-text-domain');?>:</b></th>
-                        <td><input type="text" id="nwp_settings[test_api_key]" name="nwp_settings[test_api_key]" size="40" value="<?php echo $nwp_options['test_api_key'];?>" />
+                        <td><input type="text" id="nwp_settings[test_api_key]" name="nwp_settings[test_api_key]" size="40" value="<?php echo (isset($nwp_options['test_api_key'])) ? $nwp_options['test_api_key'] : '';?>" />
                         <label class="description" for="nwp_settings[test_api_key]">(<?php _e('Required', 'nwp-text-domain'); ?>)</label>
                         </td>
                 </tr>
                 <?php } else if($tab == 'display') {?>
                 <tr valign="top">
                 <th scope="row"><?php _e('Use theme styling?', 'nwp-text-domain');?></th>
-                    <td><input type="checkbox" id='nwp_settings[use_theme_css]' name='nwp_settings[use_theme_css]' value='1' <?php checked($nwp_options['use_theme_css'], true);?> />
+                    <td><input type="checkbox" id='nwp_options[use_theme_css]' name='nwp_options[use_theme_css]' value='1' <?php checked($nwp_options['use_theme_css'], true);?> />
                         <label class="description" for="nwp_settings[use_theme_css]"><?php _e('Check to use your built in theme settings for the pricing table. Overrides all other style settings.');?></label>
                     </td>
                 </tr> 
