@@ -91,19 +91,7 @@ function nwp_custom_submenu_page_callback() {
                     <label class="description" for="nwp_price_color"><?php _e('Price font color (hex value)',
                                                                           'nwp-text-domain');?></label>
                 </tr>
-                <tr valign="top">
-                <th scope="row"><?php _e('Primary Accent Color', 'nwp-text-domain');?></th>
-                    <td><input type="text" class="color" name='nwp_primary_color' value="<?php echo get_option('nwp_primary_color');?>" />
-                    <label class="description" for="nwp_primary_color"><?php _e('Primary color for pricing table (hex value)',
-                                                                            'nwp-text-domain');?></label>
-                </tr> 
-                <tr valign="top">
-                <th scope="row"><?php _e('Secondary Accent Color', 'nwp-text-domain');?></th>
-                    <td><input type="text" class="color" name='nwp_secondary_color' value="<?php echo get_option('nwp_secondary_color');?>" />
-                    <label class="description" for="nwp_secondary_color"><?php _e('Secondary color for pricing table (hex value)',
-                                                                            'nwp-text-domain');?></label>
-                </tr> 
-                <tr valign="top">
+               <tr valign="top">
                 <th scope="row"><?php _e('Plan Background Color', 'nwp-text-domain');?></th>
                     <td><input type="text" class="color" name='nwp_plan_background_color' value="<?php echo get_option('nwp_plan_background_color');?>" />
                     <label class="description" for="nwp_plan_background_color"><?php _e('Background color for plans in the pricing table (hex value)',
@@ -216,8 +204,6 @@ function register_nwp_settings() {
     register_setting('nwp_settings_display_group', 'nwp_price_class');
     register_setting('nwp_settings_display_group', 'nwp_background');
     register_setting('nwp_settings_display_group', 'nwp_plan_font_color');
-    register_setting('nwp_settings_display_group', 'nwp_primary_color');
-    register_setting('nwp_settings_display_group', 'nwp_secondary_color');
     register_setting('nwp_settings_display_group', 'nwp_use_theme_css');
     register_setting('nwp_settings_display_group', 'nwp_price_color');
     register_setting('nwp_settings_display_group', 'nwp_plan_background_color');
