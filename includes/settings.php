@@ -26,17 +26,16 @@ function nwp_custom_submenu_page_callback() {
      <h2><?php _e('Nurego WordPress Settings', 'nwp-text-domain');?></h2>
            <p>
             <form method="POST" action="options.php">
-            <?php settings_fields('nwp_settings_group');
-    do_settings_sections('nwp_settings_group'); ?>
-
-            <table class="form-table">
+            <?php settings_fields('nwp_settings_group');?>
             <h2 class="nav-tab-wrapper'">
             <a href="?page=nwp-settings-menu&tab=api_keys" class="nav-tab <?php echo ($tab == 'api_keys') ? 'nav-tab-active' : '' ;?>">API Keys</a>
                 <a href="?page=nwp-settings-menu&tab=display" class="nav-tab <?php echo ($tab == 'display') ? 'nav-tab-active' : '' ;?>">Display</a>
                 <a href="?page=nwp-settings-menu&tab=render" class="nav-tab <?php echo ($tab == 'render') ? 'nav-tab-active' : '' ;?>">Render</a>
             </h2>
 
-            <?php if($tab == 'api_keys') {?>
+
+            <table class="form-table">
+            <?php //if($tab == 'api_keys') {?>
                 <tr valign="top">
                 <th scope="row"><b><?php _e('Nurego Live API Key', 'nwp-text-domain');?>:</b></th>
                         <td><input type="text" name="nwp_live_api_key" size="40" value="<?php echo get_option('nwp_live_api_key');?>" />
@@ -49,7 +48,7 @@ function nwp_custom_submenu_page_callback() {
                         <label class="description" for="nwp_test_api_key">(<?php _e('Required', 'nwp-text-domain'); ?>)</label>
                         </td>
                 </tr>
-                <?php } else if($tab == 'display') {?>
+                <?php// } else if($tab == 'display') {?>
                 <tr valign="top">
                 <th scope="row"><?php _e('Use theme styling?', 'nwp-text-domain');?></th>
                     <td><input type="checkbox" name='nwp_use_theme_css' value='1' <?php checked(get_option('nwp_use_theme_css'), true);?> />
@@ -148,7 +147,7 @@ function nwp_custom_submenu_page_callback() {
                                                                               'nwp-text-domain');?>.</label>
                         </td>
                 </tr>
-                <?php } else {?>
+                <//?php } else {?>
                 <tr valign="top">
                 <th scope="row"><?php _e('Select Button URL', 'nwp-text-domain');?>:</th>
                         <td>
@@ -164,7 +163,7 @@ function nwp_custom_submenu_page_callback() {
                                                                            'nwp-text-domain');?>.</label>
                         </td>
                 </tr>
-                <?php } ?>
+                <?php// } ?>
                  <tr valign="top">
                     <td><?php submit_button(); ?></td>
                </tr>
@@ -208,4 +207,5 @@ function register_nwp_settings() {
     register_setting('nwp_settings_group', 'nwp_button_color');
     register_setting('nwp_settings_group', 'nwp_button_text_color');
 }
+add_action('admin_init', 'register_nwp_settings');
 ?>
