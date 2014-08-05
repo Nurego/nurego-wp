@@ -192,7 +192,7 @@ function nwp_handle_css() {
     if (get_option('nwp_use_theme_css') == true) {
         // Include nothing so that the theme's styelsheet is used
        return;
-    } else if (get_option('nwp_css_url')) {
+    } else if (get_option('nwp_css_url') != '') {
         // Include the stylesheet specified by the user in the settings page
         return 'Nurego.setParam(\'css_url\','. get_option('css_url').');';
     } else {

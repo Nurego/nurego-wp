@@ -20,7 +20,7 @@
 .nr-default table {
     width: 100%;
     border-collapse: collapse;
-    background: <?php echo get_option('nwp_background');?>;
+    background: #<?php echo get_option('nwp_background');?>;
     <?php if (get_option('nwp_template') == '3') {
         echo 'border: none;';
     };?>
@@ -32,8 +32,8 @@
 }
 .nr-default th {
 border: <?php echo ((get_option('nwp_template') != '1')) ? '0px' : '1px';?> solid #e8e8e8;
-    background-color: <?php echo get_option('nwp_plan_background_color');?>;
-    color: <?php echo get_option('nwp_plan_font_color');?>;
+    background-color: #<?php echo get_option('nwp_plan_background_color');?>;
+    color: #<?php echo get_option('nwp_plan_font_color');?>;
     vertical-align: middle;
     text-align: center;
 }
@@ -72,26 +72,26 @@ border: <?php echo ((get_option('nwp_template') != '1')) ? '0px' : '1px';?> soli
 }
 
 .nr-default .nr-empty-th {
-    <?php if (get_option('nwp_template') == 3) echo 'background: '.get_option('nwp_background').';'; ?>;
+    <?php if (get_option('nwp_template') == 3) echo 'background: #'.get_option('nwp_background').';'; ?>;
     border-top: none;
     border-left: none;
     border-bottom: none;
 }
 .nr-default th.nr-price {
     height: 32px;
-    background-color: <?php echo get_option('nwp_plan_background');?>; //#fff;
+    background-color: #<?php echo get_option('nwp_plan_background');?>; //#fff;
     text-align: left;
     font-weight: normal;
 }
 .nr-default td.nr-price {
-    color: <?php echo get_option('nwp_price_color');?>;
+    color: #<?php echo get_option('nwp_price_color');?>;
     font-size: 24px;
     font-weight: bold;
 }
 .nr-default tfoot a {
     display: inline-block;
-    color: <?php echo (get_option('nwp_button_text_color') != '') ? get_option('nwp_button_text_color') : '#fff';?>;
-    background: <?php echo (get_option('nwp_button_color') != '') ? get_option('nwp_button_color') : '#959595';?>;
+    color: <?php echo (get_option('nwp_button_text_color') != '') ? '#'.get_option('nwp_button_text_color') : '#fff';?>;
+    background: <?php echo (get_option('nwp_button_color') != '') ? '#'.get_option('nwp_button_color') : '#959595';?>;
     height: 32px;
     line-height: 32px;
     text-align: center;
@@ -182,8 +182,8 @@ border: <?php echo ((get_option('nwp_template') != '1')) ? '0px' : '1px';?> soli
 .nr-discount {
   text-transform:uppercase;
   padding: 10px 10px 10px 10px !important;
-  background-color: <?php echo get_option('nwp_background');?>;
-  color: <?php echo get_option('nwp_price_color');?>;
+  background-color: <?php echo (get_option('nwp_background') != '') ? '#'. get_option('nwp_background') : '#f26522';?>;
+  color: <?php echo (get_option('nwp_price_color') != '') ? '#'.get_option('nwp_price_color') : 'wheat' ;?>;
 }
 .nr-trial-days {
   font-size: 10px;
