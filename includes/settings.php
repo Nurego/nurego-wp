@@ -25,8 +25,7 @@ function nwp_custom_submenu_page_callback() {
      <div class="wrap">
      <h2><?php _e('Nurego WordPress Settings', 'nwp-text-domain');?></h2>
            <p>
-            <form method="POST" action="options.php">
-            <?php settings_fields('nwp_settings_group');?>
+            
             <h2 class="nav-tab-wrapper'">
             <a href="?page=nwp-settings-menu&tab=api_keys" class="nav-tab <?php echo ($tab == 'api_keys') ? 'nav-tab-active' : '' ;?>">API Keys</a>
                 <a href="?page=nwp-settings-menu&tab=display" class="nav-tab <?php echo ($tab == 'display') ? 'nav-tab-active' : '' ;?>">Display</a>
@@ -34,8 +33,10 @@ function nwp_custom_submenu_page_callback() {
             </h2>
 
 
+            <?php if($tab == 'api_keys') {?>
+            <form method="POST" action="options.php">
+            <?php settings_fields('nwp_settings_keys_group');?>
             <table class="form-table">
-            <?php //if($tab == 'api_keys') {?>
                 <tr valign="top">
                 <th scope="row"><b><?php _e('Nurego Live API Key', 'nwp-text-domain');?>:</b></th>
                         <td><input type="text" name="nwp_live_api_key" size="40" value="<?php echo get_option('nwp_live_api_key');?>" />
@@ -48,7 +49,15 @@ function nwp_custom_submenu_page_callback() {
                         <label class="description" for="nwp_test_api_key">(<?php _e('Required', 'nwp-text-domain'); ?>)</label>
                         </td>
                 </tr>
-                <?php// } else if($tab == 'display') {?>
+                    <tr valign="top">
+                    <td><?php submit_button(); ?></td>
+               </tr>
+ 
+           </form>
+                <?php } else if($tab == 'display') {?>
+                <form method="POST" action="options.php">
+                <?php settings_fields('nwp_settings_display_group');?>
+                <table class="form-table">
                 <tr valign="top">
                 <th scope="row"><?php _e('Use theme styling?', 'nwp-text-domain');?></th>
                     <td><input type="checkbox" name='nwp_use_theme_css' value='1' <?php checked(get_option('nwp_use_theme_css'), true);?> />
@@ -147,7 +156,15 @@ function nwp_custom_submenu_page_callback() {
                                                                               'nwp-text-domain');?>.</label>
                         </td>
                 </tr>
-                <//?php } else {?>
+                   <tr valign="top">
+                    <td><?php submit_button(); ?></td>
+               </tr>
+ 
+           </form>                  
+                <?php } else {?>
+                 <form method="POST" action="options.php">
+                <?php settings_fields('nwp_settings_render_group');?>
+                <table class="form-table">
                 <tr valign="top">
                 <th scope="row"><?php _e('Select Button URL', 'nwp-text-domain');?>:</th>
                         <td>
@@ -163,12 +180,13 @@ function nwp_custom_submenu_page_callback() {
                                                                            'nwp-text-domain');?>.</label>
                         </td>
                 </tr>
-                <?php// } ?>
-                 <tr valign="top">
+                  <tr valign="top">
                     <td><?php submit_button(); ?></td>
                </tr>
  
-           </form></p>
+           </form>               
+            <?php } ?>
+</p>
            </div> <?php
 
 }
@@ -177,35 +195,35 @@ function nwp_custom_submenu_page_callback() {
  * Register all of the settings we intend to show on the settings page
  */
 function register_nwp_settings() {
-    register_setting('nwp_settings_group', 'nwp_live_api_key');
-    register_setting('nwp_settings_group', 'nwp_test_api_key');
-    register_setting('nwp_settings_group', 'nwp_element_id');
-    register_setting('nwp_settings_group', 'nwp_theme');
-    register_setting('nwp_settings_group', 'nwp_css_url');
-    register_setting('nwp_settings_group', 'nwp_select_url');
-    register_setting('nwp_settings_group', 'nwp_select_callback');
-    register_setting('nwp_settings_group', 'nwp_label_price');
-    register_setting('nwp_settings_group', 'nwp_label_select');
-    register_setting('nwp_settings_group', 'nwp_label_feature_on');
-    register_setting('nwp_settings_group', 'nwp_label_feature_off');
-    register_setting('nwp_settings_group', 'nwp_label_before_price');
-    register_setting('nwp_settings_group', 'nwp_label_after_price');
-    register_setting('nwp_settings_group', 'nwp_time_out');
-    register_setting('nwp_settings_group', 'nwp_loading_class');
-    register_setting('nwp_settings_group', 'nwp_error_class');
-    register_setting('nwp_settings_group', 'nwp_warning_class');
-    register_setting('nwp_settings_group', 'nwp_empty_class');
-    register_setting('nwp_settings_group', 'nwp_price_class');
-    register_setting('nwp_settings_group', 'nwp_background');
-    register_setting('nwp_settings_group', 'nwp_plan_font_color');
-    register_setting('nwp_settings_group', 'nwp_primary_color');
-    register_setting('nwp_settings_group', 'nwp_secondary_color');
-    register_setting('nwp_settings_group', 'nwp_use_theme_css');
-    register_setting('nwp_settings_group', 'nwp_price_color');
-    register_setting('nwp_settings_group', 'nwp_plan_background_color');
-    register_setting('nwp_settings_group', 'nwp_template');
-    register_setting('nwp_settings_group', 'nwp_button_color');
-    register_setting('nwp_settings_group', 'nwp_button_text_color');
+    register_setting('nwp_settings_keys_group', 'nwp_live_api_key');
+    register_setting('nwp_settings_keys_group', 'nwp_test_api_key');
+    register_setting('nwp_settings_display_group', 'nwp_element_id');
+    register_setting('nwp_settings_display_group', 'nwp_theme');
+    register_setting('nwp_settings_display_group', 'nwp_css_url');
+    register_setting('nwp_settings_render_group', 'nwp_select_url');
+    register_setting('nwp_settings_display_group', 'nwp_select_callback');
+    register_setting('nwp_settings_display_group', 'nwp_label_price');
+    register_setting('nwp_settings_display_group', 'nwp_label_select');
+    register_setting('nwp_settings_display_group', 'nwp_label_feature_on');
+    register_setting('nwp_settings_display_group', 'nwp_label_feature_off');
+    register_setting('nwp_settings_display_group', 'nwp_label_before_price');
+    register_setting('nwp_settings_display_group', 'nwp_label_after_price');
+    register_setting('nwp_settings_render_group', 'nwp_time_out');
+    register_setting('nwp_settings_display_group', 'nwp_loading_class');
+    register_setting('nwp_settings_display_group', 'nwp_error_class');
+    register_setting('nwp_settings_display_group', 'nwp_warning_class');
+    register_setting('nwp_settings_display_group', 'nwp_empty_class');
+    register_setting('nwp_settings_display_group', 'nwp_price_class');
+    register_setting('nwp_settings_display_group', 'nwp_background');
+    register_setting('nwp_settings_display_group', 'nwp_plan_font_color');
+    register_setting('nwp_settings_display_group', 'nwp_primary_color');
+    register_setting('nwp_settings_display_group', 'nwp_secondary_color');
+    register_setting('nwp_settings_display_group', 'nwp_use_theme_css');
+    register_setting('nwp_settings_display_group', 'nwp_price_color');
+    register_setting('nwp_settings_display_group', 'nwp_plan_background_color');
+    register_setting('nwp_settings_display_group', 'nwp_template');
+    register_setting('nwp_settings_display_group', 'nwp_button_color');
+    register_setting('nwp_settings_display_group', 'nwp_button_text_color');
 }
 add_action('admin_init', 'register_nwp_settings');
 ?>
