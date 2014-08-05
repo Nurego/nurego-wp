@@ -17,6 +17,8 @@ function register_nwp_submenu_page() {
  */
 function nwp_custom_submenu_page_callback() {
 
+    global $nwp_options;
+
     if( isset( $_GET['tab'])) $tab = $_GET['tab'];
     else $tab = 'api_keys'; 
     
@@ -26,9 +28,9 @@ function nwp_custom_submenu_page_callback() {
      <h2><?php _e('Nurego WordPress Settings', 'nwp-text-domain');?></h2>
            <p>
             <form method="POST" action="options.php">
-            <?php settings_fields('nwp_settings_group');
-    do_settings_sections('nwp_settings_group'); ?>
+            <?php settings_fields('nwp_settings_group'); ?>
 
+            // Tabs that are used to conditionally load parts of the form.
             <table class="form-table">
             <h2 class="nav-tab-wrapper'">
             <a href="?page=nwp-settings-menu&tab=api_keys" class="nav-tab <?php echo ($tab == 'api_keys') ? 'nav-tab-active' : '' ;?>">API Keys</a>
@@ -36,11 +38,13 @@ function nwp_custom_submenu_page_callback() {
                 <a href="?page=nwp-settings-menu&tab=render" class="nav-tab <?php echo ($tab == 'render') ? 'nav-tab-active' : '' ;?>">Render</a>
             </h2>
 
+            //Now use this giant if statement to load the correct part of the form.
+            //It's only a simple if else if else structure.
             <?php if($tab == 'api_keys') {?>
                 <tr valign="top">
                 <th scope="row"><b><?php _e('Nurego Live API Key', 'nwp-text-domain');?>:</b></th>
-                        <td><input type="text" name="nwp_live_api_key" size="40" value="<?php echo get_option('nwp_live_api_key');?>" />
-                        <label class="description" for="nwp_live_api_key">(<?php _e('Required', 'nwp-text-domain');?>)</label>
+                        <td><input type="text" id="nwp_options[live_api_key]" name="nwp_options[live_api_key]" size="40" value="<?php echo $nwp_options['live_api_key'];?>" />
+                        <label class="description" for="nwp_options[live_api_key]">(<?php _e('Required', 'nwp-text-domain');?>)</label>
                         </td>
                 </tr>
                 <tr valign="top">
@@ -178,34 +182,6 @@ function nwp_custom_submenu_page_callback() {
  * Register all of the settings we intend to show on the settings page
  */
 function register_nwp_settings() {
-    register_setting('nwp_settings_group', 'nwp_live_api_key');
-    register_setting('nwp_settings_group', 'nwp_test_api_key');
-    register_setting('nwp_settings_group', 'nwp_element_id');
-    register_setting('nwp_settings_group', 'nwp_theme');
-    register_setting('nwp_settings_group', 'nwp_css_url');
-    register_setting('nwp_settings_group', 'nwp_select_url');
-    register_setting('nwp_settings_group', 'nwp_select_callback');
-    register_setting('nwp_settings_group', 'nwp_label_price');
-    register_setting('nwp_settings_group', 'nwp_label_select');
-    register_setting('nwp_settings_group', 'nwp_label_feature_on');
-    register_setting('nwp_settings_group', 'nwp_label_feature_off');
-    register_setting('nwp_settings_group', 'nwp_label_before_price');
-    register_setting('nwp_settings_group', 'nwp_label_after_price');
-    register_setting('nwp_settings_group', 'nwp_time_out');
-    register_setting('nwp_settings_group', 'nwp_loading_class');
-    register_setting('nwp_settings_group', 'nwp_error_class');
-    register_setting('nwp_settings_group', 'nwp_warning_class');
-    register_setting('nwp_settings_group', 'nwp_empty_class');
-    register_setting('nwp_settings_group', 'nwp_price_class');
-    register_setting('nwp_settings_group', 'nwp_background');
-    register_setting('nwp_settings_group', 'nwp_plan_font_color');
-    register_setting('nwp_settings_group', 'nwp_primary_color');
-    register_setting('nwp_settings_group', 'nwp_secondary_color');
-    register_setting('nwp_settings_group', 'nwp_use_theme_css');
-    register_setting('nwp_settings_group', 'nwp_price_color');
-    register_setting('nwp_settings_group', 'nwp_plan_background_color');
-    register_setting('nwp_settings_group', 'nwp_template');
-    register_setting('nwp_settings_group', 'nwp_button_color');
-    register_setting('nwp_settings_group', 'nwp_button_text_color');
+    register_setting('nwp_settings_group', 'nwp_settings');
 }
 ?>
