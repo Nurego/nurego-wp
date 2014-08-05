@@ -32,8 +32,8 @@
 }
 .nr-default th {
 border: <?php echo ((get_option('nwp_template') != '1')) ? '0px' : '1px';?> solid #e8e8e8;
-    background-color: #<?php echo get_option('nwp_plan_background_color');?>;
-    color: #<?php echo get_option('nwp_plan_font_color');?>;
+    background-color: <?php echo (get_option('nwp_plan_background_color') != '') ? '#'.get_option('nwp_plan_background_color') : '#fff';?>;
+    color: <?php echo (get_option('nwp_plan_font_color') != '') ? get_option('nwp_plan_font_color') : '#000';?>;
     vertical-align: middle;
     text-align: center;
 }
@@ -79,12 +79,12 @@ border: <?php echo ((get_option('nwp_template') != '1')) ? '0px' : '1px';?> soli
 }
 .nr-default th.nr-price {
     height: 32px;
-    background-color: #<?php echo get_option('nwp_plan_background');?>; //#fff;
+    background-color: <?php echo (get_option('nwp_plan_background') != '') ? '#'.get_option('nwp_plan_background') : '#fff';?>; //#fff;
     text-align: left;
     font-weight: normal;
 }
 .nr-default td.nr-price {
-    color: #<?php echo get_option('nwp_price_color');?>;
+    color: <?php echo (get_option('nwp_price_color') != '') ? '#'.get_option('nwp_price_color') : '#f26522';?>;
     font-size: 24px;
     font-weight: bold;
 }
