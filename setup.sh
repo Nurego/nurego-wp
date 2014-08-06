@@ -30,19 +30,20 @@ git clone https://github.com/Nurego/nurego-wp gitnurego-wp
 # Ex:
 # Stable tag: 1.0.0
 cd gitnurego-wp
-version_tag=$(less nurego-wp.php | grep Stable)
-version_number=$(echo $version_tag | cut -c 15-) 
+version_tag=$(less README.txt | grep Stable)
+version_number=$(echo $version_tag | cut -c 13-) 
 echo "[***] Found new version number:"
 echo "[***] $version_number"
 
 # Clean the svn trunk and move the new files
 # Removing setup.sh and tagging the correct
 # release
-rm -rf ../nurego-wp/trunk/*
-mv * ../nurego-wp/trunk/
-cp includes/images/screen* ../nurego-wp/assets/
+cd ..
+diff -rupN nurego-wp/ gitnurego-wp/ > $version_number.patch
+patch -p1 nurego-wp/trunk/ < $version_number.patch
+mv nurego-wp/trunk/includes/images/screen* nurego-wp/assets/
 rm ../nurego-wp/trunk/setup.sh
-cd ../nurego-wp/
+cd nurego-wp/
 svn add trunk/*
 svn cp trunk tags/${version}
 
