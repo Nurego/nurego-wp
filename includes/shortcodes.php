@@ -1,7 +1,4 @@
 <?php
-/* Global settings array */
-global $nwp_options;
-
 /**
  * nwp_nurego_offering():
  * fetches an offering for the api_key it is called with
@@ -112,6 +109,23 @@ function nwp_nurego_offering($atts, $content = null) {
  */
 function nwp_nurego_from_settings_shortcode($atts, $content = null) {
 
+    //Global settings arrays
+    global $nwp_render_options;
+    global $nwp_display_options;
+    global $nwp_key_options;
+
+    // Skip these values because they are 'meta' values
+    // for other values in the array
+    $skip_keys = array('css_url',
+        'theme_css',
+        'background',
+        'plan_font_color',
+        'price_color',
+        'plan_background_color',
+        'button_color',
+        'button_text_color',
+    );
+
     // Load the nurego-js library with the correct template
     // at this time to use it 
     wp_enqueue_script('nurego-js');
@@ -119,41 +133,24 @@ function nwp_nurego_from_settings_shortcode($atts, $content = null) {
     // Need easyXDM too
     wp_enqueue_script('nwp_easyXDM'); 
     
-    // Get the environment to load
-    $environment = shortcode_atts( array(
-        'environment' =>'',
-    ), $atts);
-
-    //Array of options to iterate through
-    $a = array( 'element_id'    => 'nwp_div',   // Default for correct placement
-           'theme'              => '',
-           'select_url'         => '',
-           'select_callback'    => '',
-           'label_price'        => '',
-           'label_select'       => '',
-           'label_feature_on'   => '',
-           'label_feature_off'  => '',
-           'label_before_price' => '',
-           'label_after_price'  => '',
-           'time_out'           => '',
-           'error_class'        => '',
-           'warning_class'      => '',
-           'empty_class'        => '',
-           'price_class'        => '',
-           'template'           => '',
-       );
-
     // Top part of JS sandwich that will be returned
     $output_top = '<script type="text/javascript">'
         .'jQuery( document ).ready( function() {';
 
     // Iterate through and set the parameters
     $output_middle = '';
-    foreach ($nwp_options as $key => $value) {
-        if (isset($nwp_options[$key])) {
+    foreach ($nwp_render_options as $key => $value) {
+        if (isset($nwp_render_options[$key]) && $nwp_render_options[$key] != '' && ! in_array($key, $skip_keys)) {
             $output_middle .= 'Nurego.setParam(\''.$key .'\',\''.$value.'\');';
-        } elseif ( $key == 'element_id') { // Still need the default element_id if it isn't set.
-            $output_middle .= 'Nurego.setParam(\'element_id\',\''.$value.'\');'; 
+        } else {
+            // Throw debugging stuff here as needed
+            continue;
+        }
+    }
+
+    foreach ($nwp_display_options as $key => $value) {
+        if (isset($nwp_display_options[$key]) && $nwp_display_options[$key] != '' && ! in_array($key, $skip_keys)) {
+            $output_middle .= 'Nurego.setParam(\''.$key .'\',\''.$value.'\');';
         } else {
             // Throw debugging stuff here as needed
             continue;
@@ -162,16 +159,15 @@ function nwp_nurego_from_settings_shortcode($atts, $content = null) {
 
     //Make sure the CSS is there
     $output_middle .= nwp_handle_css();
+
+    //Render the table where the shortcode is
+    $output_middle .= 'Nurego.setParam(\'element_id\',\'nwp_div\');';
+
+    //Feed the drawing functions the plugin dir
     $output_middle .= 'Nurego.setParam(\'plugin_url\',\''.plugin_dir_url(__FILE__).'\');';
 
     //Bottom part of sandwich
-    if ($environment['environment'] == 'live') {
-        $output_bottom = 'Nurego.setApiKey(' . "'". $nwp_options['live_api_key'] . "'" . ');';
-    } else if ($environment['environment'] == 'test') {
-        $output_bottom = 'Nurego.setApiKey(' . "'". $nwp_options['test_api_key'] . "'" . ');';
-    } else {
-        return 'Invalid environment choice.';
-    };
+    $output_bottom = 'Nurego.setApiKey(' . "'". $nwp_key_options['api_key'] . "'" . ');';
 
     $output_bottom .= '});'
         .'</script>'
@@ -190,17 +186,21 @@ function nwp_nurego_from_settings_shortcode($atts, $content = null) {
  * Handles including the correct CSS stylesheet 
  */
 function nwp_handle_css() { 
-   
-    if ($nwp_options['theme_css'] == true) {
+
+    global $nwp_display_options;
+    if (! isset($display_options)) {
+        include(NUREGO_BASE_DIR . '/includes/css.php');
+        return;
+    };
+           
+    if (isset($nwp_display_options['theme_css']) && $nwp_display_options['theme_css'] == true) {
         // Include nothing so that the theme's styelsheet is used
        return;
-    } else if ($nwp_options['nwp_css_url']) {
+    } else if (isset($nwp_display_options['css_url']) && $nwp_display_options['css_url']) {
         // Include the stylesheet specified by the user in the settings page
-        return 'Nurego.setParam(\'css_url\','. $nwp_options['css_url'].');';
+        return 'Nurego.setParam(\'css_url\','. $nwp_display_options['css_url'].');';
     } else {
         // Include the stylesheet dynamically generated using settings
-        //return 'Nurego.setParam(\'css_url\',' . '\'' . NUREGO_BASE_URL . 'includes/css.php' .'\'' . ');';
-        include(NUREGO_BASE_DIR . '/includes/css.php');
     }
 }
 

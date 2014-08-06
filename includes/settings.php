@@ -41,18 +41,11 @@ function nwp_custom_submenu_page_callback() {
         <?php settings_fields('nwp_settings_key_group'); ?> 
         <table class="form-table">
             <tr valign="top">
-                <th scope="row"><b><?php _e('Nurego Live API Key', 'nwp-text-domain');?>:</b></th>
-                <td><input type="text" id="nwp_key_settings[live_api_key]" name="nwp_key_settings[live_api_key]" size="40" 
-                           value="<?php echo (isset($nwp_key_options['live_api_key'])) ? $nwp_key_options['live_api_key'] : '' ;?>" />
-                     <label class="description" for="nwp_key_settings[live_api_key]">(<?php _e('Required', 'nwp-text-domain');?>)</label>
+                <th scope="row"><b><?php _e('Nurego API Key (live OR test)', 'nwp-text-domain');?>:</b></th>
+                <td><input type="text" id="nwp_key_settings[api_key]" name="nwp_key_settings[api_key]" size="40" 
+                           value="<?php echo (isset($nwp_key_options['api_key'])) ? $nwp_key_options['api_key'] : '' ;?>" />
+                     <label class="description" for="nwp_key_settings[api_key]">(<?php _e('Required', 'nwp-text-domain');?>)</label>
                 </td>
-            </tr>
-            <tr valign="top">
-                <th scope="row"><b><?php _e('Nurego Test API Key', 'nwp-text-domain');?>:</b></th>
-                    <td><input type="text" id="nwp_key_settings[test_api_key]" name="nwp_key_settings[test_api_key]" size="40" 
-                               value="<?php echo (isset($nwp_key_options['test_api_key'])) ? $nwp_key_options['test_api_key'] : '';?>" />
-                        <label class="description" for="nwp_key_settings[test_api_key]">(<?php _e('Required', 'nwp-text-domain'); ?>)</label>
-                    </td>
             </tr>
             <tr valign="top">
                 <td><?php submit_button(); ?></td>
@@ -186,7 +179,7 @@ function nwp_custom_submenu_page_callback() {
                     <th scope="row"><?php _e('Loading Timeout', 'nwp-text-domain');?>:</th>
                         <td><input type="text" id="nwp_render_settings[time_out]" name="nwp_render_settings[time_out]" 
                                    value="<?php echo (isset($nwp_render_options['time_out'])) ? $nwp_render_options['time_out'] : '5000';?>" />
-                                <label class="description" for="nwp_render_options[time_out]">
+                                <label class="description" for="nwp_render_settings[time_out]">
                                     <?php _e('The amount of time in milliseconds to wait before timing out when loading an offering',
                                                                            'nwp-text-domain');?>.</label>
                         </td>
