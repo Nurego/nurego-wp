@@ -39,7 +39,9 @@ if(!defined('NUREGO_BASE_DIR')) {
     define('NUREGO_BASE_DIR', dirname(__FILE__));
 }
 
-$nwp_options = get_option('nwp_settings');
+$nwp_display_options = get_option('nwp_display_settings');
+$nwp_render_options = get_option('nwp_render_settings');
+$nwp_key_options = get_option('nwp_key_settings');
 
 /**
  * Includes
