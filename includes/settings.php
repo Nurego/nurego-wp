@@ -92,7 +92,7 @@ function nwp_custom_submenu_page_callback() {
             <tr valign="top">
                 <th scope="row"><?php _e('Price Font Color', 'nwp-text-domain');?></th>
                     <td><input type="text" class="color" id='nwp_display_settings[price_color]' name='nwp_display_settings[price_color]'
-                               value="<?php echo (isset($nwp_display_options['price_color'])) ? $nurego_display_options['price_color'] : '000000' ;?>" />
+                               value="<?php echo (isset($nwp_display_options['price_color'])) ? $nwp_display_options['price_color'] : '000000' ;?>" />
                         <label class="description" for="nwp_display_settings[price_color]"><?php _e('Price font color (hex value)',
                                                                           'nwp-text-domain');?></label>
                     </td>
