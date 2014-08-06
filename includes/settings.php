@@ -77,8 +77,9 @@ function nwp_custom_submenu_page_callback() {
                 <th scope="row"><?php _e('Table Background Color', 'nwp-text-domain');?></th>
                     <td><input type="text" class="color" id='nwp_display_settings[background]' name='nwp_display_settings[background]' 
                                value="<?php echo (isset($nwp_display_options['background'])) ? $nwp_display_options['background'] : '';?>" />
-                        <label class="description" for="nwp_display_options[background]"><?php _e('Table background color (hex value)',
-                                                                          'nwp-text-domain');?></label>
+                        <label class="description" for="nwp_display_options[background]">
+                               <?php _e('Table background color (hex value)','nwp-text-domain');?></label>
+                    </td>
             </tr> 
             <tr valign="top">
                 <th scope="row"><?php _e('Plan Font Color', 'nwp-text-domain');?></th>
@@ -86,13 +87,15 @@ function nwp_custom_submenu_page_callback() {
                                value="<?php echo (isset($nwp_display_options['plan_font_color'])) ? $nwp_display_options['plan_font_color'] : '';?>" />
                         <label class="description" for="nwp_display_settings[plan_font_color]"><?php _e('Plan font color (hex value)',
                                                                           'nwp-text-domain');?></label>
+                    </td>
             </tr>
             <tr valign="top">
                 <th scope="row"><?php _e('Price Font Color', 'nwp-text-domain');?></th>
                     <td><input type="text" class="color" id='nwp_display_settings[price_color]' name='nwp_display_settings[price_color]'
-                               value="<?php echo (isset($nwp_display_options['price_color'])) ? $nurego_display_options['price_color'] : '' ;?>" />
+                               value="<?php echo (isset($nwp_display_options['price_color'])) ? $nurego_display_options['price_color'] : '000000' ;?>" />
                         <label class="description" for="nwp_display_settings[price_color]"><?php _e('Price font color (hex value)',
                                                                           'nwp-text-domain');?></label>
+                    </td>
             </tr>
             <tr valign="top">
                 <th scope="row"><?php _e('Plan Background Color', 'nwp-text-domain');?></th>
@@ -100,6 +103,7 @@ function nwp_custom_submenu_page_callback() {
                                value="<?php echo (isset($nwp_display_options['plan_background_color'])) ? $nwp_display_options['plan_background_color'] : '';?>" />
                         <label class="description" for="nwp_display_settings[plan_background_color]"><?php _e('Background color for plans in the pricing table (hex value)',
                                                                             'nwp-text-domain');?></label>
+                    </td>
             </tr> 
             <tr valign="top">
                 <th scope="row"><?php _e('Button Color', 'nwp-text-domain');?></th>
@@ -107,6 +111,7 @@ function nwp_custom_submenu_page_callback() {
                                value="<?php echo (isset($nwp_display_options['button_color'])) ? $nwp_display_options['button_color'] : '';?>" />
                         <label class="description" for="nwp_display_settings[button_color]"><?php _e('Button color (hex value)',
                                                                             'nwp-text-domain');?></label>
+                    </td>
             </tr> 
             <tr valign="top">
                 <th scope="row"><?php _e('Button Text Color', 'nwp-text-domain');?></th>
@@ -114,13 +119,14 @@ function nwp_custom_submenu_page_callback() {
                                value="<?php echo (isset($nwp_display_options['button_text_color'])) ? $nwp_display_options['button_text_color'] : '';?>" />
                         <label class="description" for="nwp_display_settings[button_text_color]"><?php _e('Button text color (hex value)',
                                                                             'nwp-text-domain');?></label>
+                    </td>
             </tr>                <tr valign="top">
                 <th scope="row"><?php _e('Price Label', 'nwp-text-domain');?>:</th>
                     <td><input type="text" id="nwp_display_settings[label_price]" name="nwp_display_settings[label_price]" 
                                value="<?php echo (isset($nwp_display_options['label_price'])) ? $nwp_display_options['label_price'] : '';?>" />
                         <label class="description" for="nwp_display_settings[nwp_label_price]"><?php _e('Label in the price column',
                                                                               'nwp-text-domain');?>.</label>
-                        </td>
+                    </td>
                 </tr>
                 <tr valign="top">
                 <th scope="row"><?php _e('Select Button Text', 'nwp-text-domain');?>:</th>
