@@ -10,18 +10,20 @@
  if(!defined('NUREGO_BASE_CSS_URL')) {
      define('NUREGO_BASE_CSS_URL', plugin_dir_url(__FILE__));
  }
+
+global $nwp_display_options;
 ?>
 
 
 <?php echo '<style>';?>
 .nr-default {
-    font-family: <?php echo get_option('nwp_font');?>,"Lato",Helvetica,Arial,sans-serif;
+    font-family: <?php echo $nwp_display_options['font'];?>,"Lato",Helvetica,Arial,sans-serif;
 }
 .nr-default table {
     width: 100%;
     border-collapse: collapse;
-    background: <?php echo get_option('nwp_background');?>;
-    <?php if (get_option('nwp_template') == '3') {
+    background: <'#'.?php echo $nwp_display_options['background'];?>;
+    <?php if ($nwp_display_options['template'] == '3') {
         echo 'border: none;';
     };?>
 }
@@ -31,9 +33,9 @@
     vertical-align: middle;
 }
 .nr-default th {
-border: <?php echo ((get_option('nwp_template') != '1')) ? '0px' : '1px';?> solid #e8e8e8;
-    background-color: <?php echo get_option('nwp_plan_background_color');?>;
-    color: <?php echo get_option('nwp_plan_font_color');?>;
+border: <?php echo (($nwp_display_options['template'] != '1')) ? '0px' : '1px';?> solid #e8e8e8;
+    background-color: <?php echo '#'.$nwp_display_options['plan_background_color'];?>;
+    color: <?php echo '#'.$nwp_display_options['plan_font_color'];?>;
     vertical-align: middle;
     text-align: center;
 }
@@ -72,26 +74,26 @@ border: <?php echo ((get_option('nwp_template') != '1')) ? '0px' : '1px';?> soli
 }
 
 .nr-default .nr-empty-th {
-    <?php if (get_option('nwp_template') == 3) echo 'background: '.get_option('nwp_background').';'; ?>;
+    <?php if ($nwp_display_options['template'] == 3) echo 'background: '.$nwp_display_options['nwp_background'].';'; ?>;
     border-top: none;
     border-left: none;
     border-bottom: none;
 }
 .nr-default th.nr-price {
     height: 32px;
-    background-color: <?php echo get_option('nwp_plan_background');?>; //#fff;
+    background-color: <?php echo '#'.$nwp_display_options['plan_background_color'];?>; //#fff;
     text-align: left;
     font-weight: normal;
 }
 .nr-default td.nr-price {
-    color: <?php echo get_option('nwp_price_color');?>;
+    color: <?php echo '#'.$nwp_display_options['price_color'];?>;
     font-size: 24px;
     font-weight: bold;
 }
 .nr-default tfoot a {
     display: inline-block;
-    color: <?php echo (get_option('nwp_button_text_color') != '') ? get_option('nwp_button_text_color') : '#fff';?>;
-    background: <?php echo (get_option('nwp_button_color') != '') ? get_option('nwp_button_color') : '#959595';?>;
+    color: <?php echo ($nwp_display_options['button_text_color'] != '') ? '#'.$nwp_display_options['button_text_color'] : '#fff';?>;
+    background: <?php echo ($nwp_display_options['button_color'] != '') ? '#'.$nwp_display_options['button_color'] : '#959595';?>;
     height: 32px;
     line-height: 32px;
     text-align: center;
@@ -114,7 +116,7 @@ border: <?php echo ((get_option('nwp_template') != '1')) ? '0px' : '1px';?> soli
     height: 16px;
     display: block;
     margin: 0 auto;
-    background: url("<?php echo NUREGO_BASE_CSS_URL . '/../images/ico-sprite.gif';?>") 0 0 no-repeat;
+    background: url("<?php echo NUREGO_BASE_CSS_URL . '../includes/images/ico-sprite.gif';?>") 0 0 no-repeat;
 }
 .nr-default .nr-check.nr-yes { background-position: 0 0; }
 .nr-default .nr-check.nr-no { background-position: -16px 0; }
@@ -141,10 +143,10 @@ border: <?php echo ((get_option('nwp_template') != '1')) ? '0px' : '1px';?> soli
     margin: 0 auto 10px;
 }
 .nr-default .nr-container.nr-loading {
-    background: url("../images/loader.gif") 50% 50% no-repeat;
+    background: url(<?php echo '"'.NUREGO_BASE_CSS_URL.'"' . '"../includes/images/loader.gif"';?> ) 50% 50% no-repeat;
 }
 .nr-default .nr-container.nr-empty {
-    background: url("../images/empty.gif") 50% 50% no-repeat;
+    background: url(<?php echo '"'.NUREGO_BASE_CSS_URL.'"'.'"../images/includes/empty.gif"';?>) 50% 50% no-repeat;
 }
 
 .nr-signup-div {
@@ -182,8 +184,8 @@ border: <?php echo ((get_option('nwp_template') != '1')) ? '0px' : '1px';?> soli
 .nr-discount {
   text-transform:uppercase;
   padding: 10px 10px 10px 10px !important;
-  background-color: <?php echo get_option('nwp_background');?>;
-  color: <?php echo get_option('nwp_price_color');?>;
+  background-color: #<?php echo $nwp_display_options['background'];?>;
+  color: <?php echo '#'.$nwp_display_options['price_color'];?>;
 }
 .nr-trial-days {
   font-size: 10px;
