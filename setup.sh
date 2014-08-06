@@ -38,9 +38,9 @@ echo "[***] $version_number"
 # Clean the svn trunk and move the new files
 # Removing setup.sh and tagging the correct
 # release
-rm -rf ../nurego-wp/trunk*
+rm -rf ../nurego-wp/trunk/*
 mv * ../nurego-wp/trunk/
-cp screen* ../nurego-wp/assets/
+cp includes/images/screen* ../nurego-wp/assets/
 rm ../nurego-wp/trunk/setup.sh
 cd ../nurego-wp/
 svn add trunk/*
