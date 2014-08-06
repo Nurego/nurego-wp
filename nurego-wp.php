@@ -5,7 +5,7 @@
  * Description Nurego integration for your WordPress site.
  * Version: 1.0.0
  * Text Domain: nwp-text-domain
- * Author: Erik Barzdukas
+ * Author: nurego
  * Author URI: https://github.com/erikbarzdukas
  * License: GPL2
  *
@@ -38,6 +38,10 @@ if(!defined('NUREGO_BASE_URL')) {
 if(!defined('NUREGO_BASE_DIR')) {
     define('NUREGO_BASE_DIR', dirname(__FILE__));
 }
+
+$nwp_display_options = get_option('nwp_display_settings');
+$nwp_render_options = get_option('nwp_render_settings');
+$nwp_key_options = get_option('nwp_key_settings');
 
 /**
  * Includes
