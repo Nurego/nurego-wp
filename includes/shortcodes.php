@@ -124,6 +124,7 @@ function nwp_nurego_from_settings_shortcode($atts, $content = null) {
         'plan_background_color',
         'button_color',
         'button_text_color',
+        'use_theme_css',
     );
 
     // Load the nurego-js library with the correct template
@@ -188,19 +189,17 @@ function nwp_nurego_from_settings_shortcode($atts, $content = null) {
 function nwp_handle_css() { 
 
     global $nwp_display_options;
-    if (! isset($display_options)) {
-        include(NUREGO_BASE_DIR . '/includes/css.php');
-        return;
-    };
-           
-    if (isset($nwp_display_options['theme_css']) && $nwp_display_options['theme_css'] == true) {
+               
+    if (isset($nwp_display_options['use_theme_css']) && $nwp_display_options['use_theme_css']  == true) {
         // Include nothing so that the theme's styelsheet is used
-       return;
+        return;
     } else if (isset($nwp_display_options['css_url']) && $nwp_display_options['css_url']) {
         // Include the stylesheet specified by the user in the settings page
         return 'Nurego.setParam(\'css_url\','. $nwp_display_options['css_url'].');';
     } else {
         // Include the stylesheet dynamically generated using settings
+        include(NUREGO_BASE_DIR . '/includes/css.php');
+        return;
     }
 }
 
