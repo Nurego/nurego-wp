@@ -44,13 +44,12 @@ function nwp_custom_submenu_page_callback() {
                 <th scope="row"><b><?php _e('Nurego API Key (live OR test)', 'nwp-text-domain');?>:</b></th>
                 <td><input type="text" id="nwp_key_settings[api_key]" name="nwp_key_settings[api_key]" size="40" 
                            value="<?php echo (isset($nwp_key_options['api_key'])) ? $nwp_key_options['api_key'] : '' ;?>" />
-                     <label class="description" for="nwp_key_settings[api_key]">(<?php _e('Required', 'nwp-text-domain');?>)</label>
+                    <label class="description" for="nwp_key_settings[api_key]">(<?php _e('Required', 'nwp-text-domain');?>)</label>
                 </td>
             </tr>
             <tr valign="top">
                 <td><?php submit_button(); ?></td>
             </tr>
- 
         </form></p>
     <?php } else if($tab == 'display') {?>
         <form method="POST" action="options.php">
@@ -61,7 +60,7 @@ function nwp_custom_submenu_page_callback() {
                     <td><input type="checkbox" id='nwp_display_settings[use_theme_css]' name='nwp_display_settings[use_theme_css]' 
                                value='1' <?php checked(1, isset($nwp_display_options['use_theme_css']) );?> />
                         <label class="description" for="nwp_display_settings[use_theme_css]">
-                               <?php _e('Check to use your built in theme settings for the pricing table. Overrides all other style settings.');?></label>
+                               <?php _e('Check to use your built in theme settings for the pricing table. (Overrides all settings below.)');?></label>
                     </td>
             </tr> 
             <tr valign="top">
@@ -69,7 +68,7 @@ function nwp_custom_submenu_page_callback() {
                     <td><input type="text" id="nwp_display_settings[css_url]" name="nwp_display_settings[css_url]" 
                                value="<?php echo (isset($nwp_display_options['css_url'])) ? $nwp_display_options['css_url'] : '';?>" />
                         <label class="description" for="nwp_display_settings[css_url]">
-                            <?php _e('The ABSOLUTE Url to the custom CSS file to be used. (Will override current settings)',
+                            <?php _e('The ABSOLUTE Url to the custom CSS file to be used. (Will override all settings below.)',
                                                                               'nwp-text-domain');?>.</label>
                     </td>
             </tr>
