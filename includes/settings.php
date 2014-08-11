@@ -65,6 +65,15 @@ function nwp_custom_submenu_page_callback() {
                     </td>
             </tr> 
             <tr valign="top">
+                <th scope="row"><?php _e('Custom CSS Url', 'nwp-text-domain');?>:</th>
+                    <td><input type="text" id="nwp_display_settings[css_url]" name="nwp_display_settings[css_url]" 
+                               value="<?php echo (isset($nwp_display_options['css_url'])) ? $nwp_display_options['css_url'] : '';?>" />
+                        <label class="description" for="nwp_display_settings[css_url]">
+                            <?php _e('The ABSOLUTE Url to the custom CSS file to be used. (Will override current settings)',
+                                                                              'nwp-text-domain');?>.</label>
+                    </td>
+            </tr>
+           <tr valign="top">
                 <th scope="row"><?php _e('Table Template', 'nwp-text-domain');?>:</th>
                     <td><select id="nwp_display_settings[template]" name="nwp_display_settings[template]">
                         <option value="1" <?php selected($nwp_display_options['template'], 1);?>><?php _e('Template 1', 'nwp-text-domain');?></option>
@@ -150,16 +159,6 @@ function nwp_custom_submenu_page_callback() {
                                    value="<?php echo (isset($nwp_display_options['label_after_price'])) ? $nwp_display_options['label_after_price'] : '';?>" />
                         <label class="description" for="nwp_display_settings[label_after_price]"><?php _e('Price suffix (ie $ for 1.00$)',
                                                                    'nwp-text-domain');?>.</label>
-                        </td>
-                </tr>
-                <tr valign="top">
-                <th scope="row"><?php _e('Custom CSS Url', 'nwp-text-domain');?>:</th>
-                        <td>
-                            <input type="text" id="nwp_display_settings[css_url]" name="nwp_display_settings[css_url]" 
-                                   value="<?php echo (isset($nwp_display_options['css_url'])) ? $nwp_display_options['css_url'] : '';?>" />
-                                   <label class="description" for="nwp_display_settings[css_url]">
-                                            <?php _e('The ABSOLUTE Url to the custom CSS file to be used. (Will override current settings)',
-                                                                              'nwp-text-domain');?>.</label>
                         </td>
                 </tr>
                 <tr valign="top">
