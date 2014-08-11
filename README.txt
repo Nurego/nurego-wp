@@ -30,11 +30,11 @@ Under "Settings" in your Nurego account.
 
 = My table doesn't look pretty yet? =
 
-Customize your colors by entering hex values in the color fields in the settings menu.
+You can use your theme's default table settings, specify the url of a stylesheet to use, or set options in the Nurego-WP settings page. The plugin first looks to see if you've chosen to use your theme's style settings. If no, it looks for a custom CSS url. If none is provided, then the options from the settings page are used. 
 
 = How do I make the buttons go to the right place? =
 
-Enter the full URL to the page you want linked to the buttons. The table will automatically append the plan guid to it, but you must include the '?plan_id='. Example: 'https://example.com/signup?plan_id='
+Enter the full URL to the page you want linked to the buttons. The plugin will automatically append the plan guid to it, but you must include the '?plan_id=' in order to correctly pass the plan id parameter to the URL. Example: 'https://example.com/signup?plan_id='
 
 = Which shortcode should I use? =
 
