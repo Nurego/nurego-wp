@@ -173,7 +173,7 @@ function nwp_custom_submenu_page_callback() {
                     <th scope="row"><?php _e('Select Button URL', 'nwp-text-domain');?>:</th>
                         <td>
                             <input type="text" id="nwp_render_settings[select_url]" name="nwp_render_settings[select_url]" 
-                                   value="<?php echo (isset($nwp_render_options['select_url'])) ? $nwp_render_options['select_url'] : '';?>" />
+                                   value="<?php echo (isset($nwp_render_options['select_url'])) ? $nwp_render_options['select_url'] : 'https://portal.nurego.com/sign-up?api_key=';?>" />
                                 <label class="description" for="nwp_render_settings[select_url]">
                                     <?php _e('URL to send the user to after selecting a plan. Ex http://foo.com/?plan_id=', 
                                                                                  'nwp-text-domain');?>.</label>
