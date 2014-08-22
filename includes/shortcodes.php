@@ -211,4 +211,3 @@ function nwp_handle_css() {
 add_shortcode('nurego', 'nwp_nurego_from_settings_shortcode');
 add_shortcode('nurego-custom', 'nwp_nurego_offering');
 ?>
-
