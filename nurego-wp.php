@@ -3,8 +3,8 @@
  * Plugin Name: Nurego WordPress
  * Plugin URI: http://www.nurego.com
  * Description Nurego integration for your WordPress site.
- * Version: 2.1.0
- * Stable: 2.1.0
+ * Version: 2.1.2
+ * Stable: 2.1.2
  * Text Domain: nwp-text-domain
  * Author: nurego
  * Author URI: https://github.com/erikbarzdukas
